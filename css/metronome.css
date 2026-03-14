@@ -1,0 +1,330 @@
+/* ─── Metronome Section ───────────────────────────────────────────── */
+
+.metronome {
+  margin-bottom: 2.5rem;
+}
+
+.metronome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 2rem 1.5rem;
+}
+
+/* ─── Beat Indicator ────────────────────────────────────────────── */
+
+.beat-indicator {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.beat-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: background-color 0.05s ease, transform 0.05s ease,
+    box-shadow 0.05s ease;
+}
+
+.beat-dot.accent {
+  width: 22px;
+  height: 22px;
+}
+
+.beat-dot.active {
+  background-color: var(--color-accent);
+  transform: scale(1.25);
+  box-shadow: 0 0 10px var(--color-accent-soft);
+}
+
+/* ─── BPM Display ───────────────────────────────────────────────── */
+
+.bpm-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.bpm-number {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-text);
+  letter-spacing: -3px;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.1rem 0.4rem;
+  transition: background-color 0.15s ease;
+}
+
+.bpm-number:hover {
+  background-color: var(--color-surface-alt);
+}
+
+.bpm-number[contenteditable="true"] {
+  outline: 2px solid var(--color-accent);
+  background-color: var(--color-surface-alt);
+  cursor: text;
+}
+
+.bpm-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ─── BPM Controls ──────────────────────────────────────────────── */
+
+.bpm-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.bpm-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0%,
+    var(--color-accent) var(--pct, 50%),
+    var(--color-border) var(--pct, 50%),
+    var(--color-border) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.bpm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.bpm-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.bpm-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-accent);
+  cursor: pointer;
+}
+
+.bpm-nudge {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nudge-btn {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.nudge-btn:hover {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ─── Sound Selector ────────────────────────────────────────────── */
+
+.sound-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sound-btn {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.sound-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.sound-btn.active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ─── Action Buttons ─────────────────────────────────────────────── */
+
+.metronome-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.play-btn {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-md);
+}
+
+.play-btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.play-btn.playing {
+  background-color: var(--color-text);
+}
+
+.tap-btn {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+.tap-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.tap-btn:active {
+  background-color: var(--color-accent-soft);
+}
+
+/* ─── Practice Timer ─────────────────────────────────────────────── */
+
+.timer-section {
+  margin-bottom: 2.5rem;
+}
+
+.timer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem 1.5rem;
+}
+
+.timer-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.timer-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--color-accent);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.timer-display.timer-done {
+  color: var(--color-text-muted);
+}
+
+.timer-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timer-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.timer-input {
+  width: 3.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+  -moz-appearance: textfield;
+}
+
+.timer-input::-webkit-inner-spin-button,
+.timer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.timer-input:focus {
+  outline: 2px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.timer-input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.timer-colon {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin: 0 0.1rem;
+}
+
+.timer-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "single-stroke-pyramid",
+    "name": "Single Stroke Pyramid",
+    "category": "Warm Up",
+    "difficulty": "beginner",
+    "bpmRange": {
+      "min": 60,
+      "max": 120
+    },
+    "rudiments": [
+      "single-stroke-roll"
+    ],
+    "description": "Start at your minimum BPM, increase by 5 every 30 seconds until you reach the max, then work back down. Builds endurance and control across tempos.",
+    "youtubeId": null
+  },
+  {
+    "id": "double-stroke-builder",
+    "name": "Double Stroke Builder",
+    "category": "Warm Up",
+    "difficulty": "beginner",
+    "bpmRange": {
+      "min": 50,
+      "max": 100
+    },
+    "rudiments": [
+      "double-stroke-roll"
+    ],
+    "description": "Play doubles slowly, focusing on letting the second stroke bounce naturally. Gradually increase tempo. Never sacrifice quality for speed.",
+    "youtubeId": null
+  },
+  {
+    "id": "alternating-hands-warmup",
+    "name": "Alternating Hands Warm-Up",
+    "category": "Warm Up",
+    "difficulty": "beginner",
+    "bpmRange": {
+      "min": 60,
+      "max": 80
+    },
+    "rudiments": [
+      "single-stroke-roll"
+    ],
+    "description": "Play single strokes at a relaxed tempo for 5 minutes straight. Focus on even dynamics, relaxed grip, and wrist rebound \u2014 no tension.",
+    "youtubeId": null
+  },
+  {
+    "id": "paradiddle-accent-pattern",
+    "name": "Paradiddle Accent Pattern",
+    "category": "Stick Control",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 70,
+      "max": 120
+    },
+    "rudiments": [
+      "single-paradiddle"
+    ],
+    "description": "Play paradiddles while accenting the first note of each group (R accent, L, R, R). Then move the accent to beat 2, 3, and 4 in separate cycles. Builds dynamic control.",
+    "youtubeId": null
+  },
+  {
+    "id": "double-paradiddle-groove",
+    "name": "Double Paradiddle Groove",
+    "category": "Stick Control",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 60,
+      "max": 100
+    },
+    "rudiments": [
+      "double-paradiddle"
+    ],
+    "description": "Loop the double paradiddle continuously, accenting each right hand stroke. Then swap: accent only left hand strokes. Great for triplet-feel groove phrases.",
+    "youtubeId": null
+  },
+  {
+    "id": "paradiddle-inversion-drill",
+    "name": "Paradiddle Inversion Drill",
+    "category": "Stick Control",
+    "difficulty": "advanced",
+    "bpmRange": {
+      "min": 60,
+      "max": 110
+    },
+    "rudiments": [
+      "single-paradiddle"
+    ],
+    "description": "Cycle through all four inversions of the paradiddle (RLRR, LRLL, RLLR, LRRL) without stopping. One bar each. Develops sticking fluency.",
+    "youtubeId": null
+  },
+  {
+    "id": "five-stroke-roll-phrase",
+    "name": "Five Stroke Roll Phrase",
+    "category": "Speed & Endurance",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 80,
+      "max": 140
+    },
+    "rudiments": [
+      "five-stroke-roll"
+    ],
+    "description": "Play continuous five stroke rolls. Focus on the accent alternating hands each repetition. Set a timer for 2 minutes and maintain consistent speed.",
+    "youtubeId": null
+  },
+  {
+    "id": "speed-burst-singles",
+    "name": "Speed Burst Singles",
+    "category": "Speed & Endurance",
+    "difficulty": "advanced",
+    "bpmRange": {
+      "min": 140,
+      "max": 220
+    },
+    "rudiments": [
+      "single-stroke-roll"
+    ],
+    "description": "Play 4 bars at a comfortable tempo, then burst into maximum speed for 1 bar, then return. Repeat. Trains explosive speed without sacrificing control.",
+    "youtubeId": null
+  },
+  {
+    "id": "triple-stroke-triplet-loop",
+    "name": "Triple Stroke Triplet Loop",
+    "category": "Speed & Endurance",
+    "difficulty": "advanced",
+    "bpmRange": {
+      "min": 80,
+      "max": 160
+    },
+    "rudiments": [
+      "triple-stroke-roll"
+    ],
+    "description": "Loop triple strokes in a triplet feel \u2014 RRR LLL, fitting naturally into 6/8 or 12/8 grooves. Increase BPM every 30 seconds.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-tap-groove",
+    "name": "Flam Tap Groove",
+    "category": "Flam Exercises",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 60,
+      "max": 100
+    },
+    "rudiments": [
+      "flam-tap"
+    ],
+    "description": "Play continuous flam taps evenly. Focus on keeping the grace notes soft and consistent. Then apply between snare and hi-hat for a groove context.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-accent-triplets",
+    "name": "Flam Accent Triplets",
+    "category": "Flam Exercises",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 65,
+      "max": 110
+    },
+    "rudiments": [
+      "flam-accent"
+    ],
+    "description": "Play flam accents in a steady triplet pulse. Accent the flam stroke clearly. Great for developing expressive dynamics and rudimental texture.",
+    "youtubeId": null
+  },
+  {
+    "id": "drag-control",
+    "name": "Drag Control Study",
+    "category": "Drag Exercises",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 55,
+      "max": 95
+    },
+    "rudiments": [
+      "drag",
+      "single-drag-tap"
+    ],
+    "description": "Alternate between drag ruffs and single drag taps. Focus on placing the grace notes as close to the beat as possible without becoming a roll.",
+    "youtubeId": null
+  },
+  {
+    "id": "rudiment-independence-starter",
+    "name": "Rudiment Independence Starter",
+    "category": "Independence",
+    "difficulty": "intermediate",
+    "bpmRange": {
+      "min": 60,
+      "max": 90
+    },
+    "rudiments": [
+      "single-paradiddle",
+      "single-stroke-roll"
+    ],
+    "description": "Play paradiddles on the hands while keeping a steady quarter-note pulse with your foot on the hi-hat. Develops coordination between limbs.",
+    "youtubeId": null
+  },
+  {
+    "id": "slow-practice-challenge",
+    "name": "Slow Practice Challenge",
+    "category": "Technique",
+    "difficulty": "beginner",
+    "bpmRange": {
+      "min": 40,
+      "max": 60
+    },
+    "rudiments": [
+      "single-stroke-roll",
+      "double-stroke-roll",
+      "single-paradiddle"
+    ],
+    "description": "Play your three core rudiments as slowly as possible. Slow practice reveals technique flaws that speed hides. Spend at least 5 minutes here.",
+    "youtubeId": null
+  },
+  {
+    "id": "even-strokes-challenge",
+    "name": "Even Strokes Challenge",
+    "category": "Technique",
+    "difficulty": "beginner",
+    "bpmRange": {
+      "min": 60,
+      "max": 80
+    },
+    "rudiments": [
+      "single-stroke-roll"
+    ],
+    "description": "Play single strokes and record yourself. Listen back: are all strokes truly the same volume? Adjust your weaker hand until you can't tell the difference.",
+    "youtubeId": null
+  }
+]

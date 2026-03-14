@@ -1,0 +1,30 @@
+/* ─── Light Theme (default) ─────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  --color-bg:           #f8f8f8;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f0f0f0;
+  --color-border:       #e0e0e0;
+  --color-text:         #1a1a1a;
+  --color-text-muted:   #6b6b6b;
+  --color-accent:       #e63946;
+  --color-accent-hover: #c1121f;
+  --color-accent-soft:  rgba(230, 57, 70, 0.12);
+  --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:          0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+/* ─── Dark Theme ────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg:           #111111;
+  --color-surface:      #1e1e1e;
+  --color-surface-alt:  #2a2a2a;
+  --color-border:       #333333;
+  --color-text:         #f0f0f0;
+  --color-text-muted:   #909090;
+  --color-accent:       #e63946;
+  --color-accent-hover: #ff6b74;
+  --color-accent-soft:  rgba(230, 57, 70, 0.18);
+  --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.30);
+  --shadow-md:          0 4px 12px rgba(0, 0, 0, 0.40);
+}

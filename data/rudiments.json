@@ -1,0 +1,362 @@
+[
+  {
+    "id": "single-stroke-roll",
+    "name": "Single Stroke Roll",
+    "category": "Single Strokes",
+    "difficulty": "beginner",
+    "sticking": "R L R L R L R L",
+    "description": "The most fundamental rudiment. Alternate single strokes between hands at an even velocity. The foundation of all drumming.",
+    "youtubeId": "Oy9cGUxI1o0"
+  },
+  {
+    "id": "single-stroke-four",
+    "name": "Single Stroke Four",
+    "category": "Single Strokes",
+    "difficulty": "beginner",
+    "sticking": "R L R L",
+    "description": "Four alternating single strokes. Focus on even spacing and consistent volume across both hands.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-stroke-seven",
+    "name": "Single Stroke Seven",
+    "category": "Single Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R L R L R L R",
+    "description": "Seven alternating strokes starting with the right hand. Great for developing linear phrases and odd-grouping phrasing.",
+    "youtubeId": null
+  },
+  {
+    "id": "multiple-bounce-roll",
+    "name": "Multiple Bounce Roll",
+    "category": "Multiple Bounce Rolls",
+    "difficulty": "intermediate",
+    "sticking": "R~~~ L~~~",
+    "description": "A closed roll where each hand produces multiple controlled bounces per stroke. Apply consistent pressure to achieve a smooth, sustained sound.",
+    "youtubeId": null
+  },
+  {
+    "id": "triple-stroke-roll",
+    "name": "Triple Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R R L L L",
+    "description": "Three consecutive strokes per hand. Builds on double strokes and is great for triplet-based phrasing and fills.",
+    "youtubeId": null
+  },
+  {
+    "id": "double-stroke-roll",
+    "name": "Double Stroke Open Roll",
+    "category": "Double Strokes",
+    "difficulty": "beginner",
+    "sticking": "R R L L R R L L",
+    "description": "Two consecutive strokes with each hand. Play them open and controlled — the foundation for speed and endurance.",
+    "youtubeId": "Kg0ZpMUOFWo"
+  },
+  {
+    "id": "five-stroke-roll",
+    "name": "Five Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R L L R",
+    "description": "Two doubles followed by a single. The accent falls on the final single, which alternates hands on each repetition.",
+    "youtubeId": null
+  },
+  {
+    "id": "six-stroke-roll",
+    "name": "Six Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R L L R R L",
+    "description": "Single-double-double pattern. The accents on the singles create a natural groove feel that translates well to the drum set.",
+    "youtubeId": null
+  },
+  {
+    "id": "seven-stroke-roll",
+    "name": "Seven Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R L L R R L",
+    "description": "Three doubles plus a single. Fits naturally into compound (6/8) meter phrasing and rudimental solos.",
+    "youtubeId": null
+  },
+  {
+    "id": "nine-stroke-roll",
+    "name": "Nine Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R L L R R L L R",
+    "description": "Four doubles plus a single. A classic rudimental roll that fits within a two-beat phrase at most tempos.",
+    "youtubeId": null
+  },
+  {
+    "id": "ten-stroke-roll",
+    "name": "Ten Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R L L R R L L R L",
+    "description": "Four doubles ending in two singles. The two accented singles at the end give it a distinctive punchy finish.",
+    "youtubeId": null
+  },
+  {
+    "id": "eleven-stroke-roll",
+    "name": "Eleven Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "intermediate",
+    "sticking": "R R L L R R L L R R L",
+    "description": "Five doubles plus a single. Fits across three beats and is useful for extending phrases across bar lines.",
+    "youtubeId": null
+  },
+  {
+    "id": "thirteen-stroke-roll",
+    "name": "Thirteen Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "advanced",
+    "sticking": "R R L L R R L L R R L L R",
+    "description": "Six doubles plus a single. A longer roll that demands consistent doubles and precise control to the final accent.",
+    "youtubeId": null
+  },
+  {
+    "id": "fifteen-stroke-roll",
+    "name": "Fifteen Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "advanced",
+    "sticking": "R R L L R R L L R R L L R R L",
+    "description": "Seven doubles plus a single. Spans a full measure at most tempos and is a staple in rudimental corps drumming.",
+    "youtubeId": null
+  },
+  {
+    "id": "seventeen-stroke-roll",
+    "name": "Seventeen Stroke Roll",
+    "category": "Double Strokes",
+    "difficulty": "advanced",
+    "sticking": "R R L L R R L L R R L L R R L L R",
+    "description": "Eight doubles plus a single. The longest of the standard stroke rolls — requires strong endurance and consistent bounce.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-paradiddle",
+    "name": "Single Paradiddle",
+    "category": "Paradiddles",
+    "difficulty": "beginner",
+    "sticking": "R L R R L R L L",
+    "description": "A four-note grouping combining singles and a double (RLRR LRLL). One of the most versatile rudiments for the drum set.",
+    "youtubeId": "ZlkFkq9GUOM"
+  },
+  {
+    "id": "double-paradiddle",
+    "name": "Double Paradiddle",
+    "category": "Paradiddles",
+    "difficulty": "intermediate",
+    "sticking": "R L R L R R L R L R L L",
+    "description": "Six notes: four singles followed by a double (RLRLRR LRLRLL). Fits naturally into triplet-based grooves and fills.",
+    "youtubeId": null
+  },
+  {
+    "id": "triple-paradiddle",
+    "name": "Triple Paradiddle",
+    "category": "Paradiddles",
+    "difficulty": "intermediate",
+    "sticking": "R L R L R L R R L R L R L R L L",
+    "description": "Eight notes: six singles followed by a double. Excellent for building hand independence, speed, and phrasing in 8th-note contexts.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-paradiddle-diddle",
+    "name": "Single Paradiddle-diddle",
+    "category": "Paradiddles",
+    "difficulty": "intermediate",
+    "sticking": "R L R R L L",
+    "description": "Six-note rudiment: a single then two doubles (RLRRLL LRLLRR). Essential for hi-hat ostinatos and 6/8 linear drumming.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam",
+    "name": "Flam",
+    "category": "Flams",
+    "difficulty": "beginner",
+    "sticking": "lR / rL",
+    "description": "A grace note played just before a full stroke on the opposite hand. The grace note should be softer and very close in time to the primary stroke.",
+    "youtubeId": "w_RRf1DLXPU"
+  },
+  {
+    "id": "flam-accent",
+    "name": "Flam Accent",
+    "category": "Flams",
+    "difficulty": "intermediate",
+    "sticking": "lR L R / rL R L",
+    "description": "A flam on beat one of a triplet, followed by two single strokes. The flam accent alternates each grouping and is a classic in rudimental drumming.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-tap",
+    "name": "Flam Tap",
+    "category": "Flams",
+    "difficulty": "intermediate",
+    "sticking": "lR R / rL L",
+    "description": "A flam followed by a tap with the same hand. Accent the flam, keep the tap soft. A great rudiment for building hand consistency.",
+    "youtubeId": null
+  },
+  {
+    "id": "flamacue",
+    "name": "Flamacue",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "lR L rL R",
+    "description": "A five-note rudiment with flams on the first and fourth strokes. The accent shifts between hands, creating a rich classical snare drum texture.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-paradiddle",
+    "name": "Flam Paradiddle",
+    "category": "Flams",
+    "difficulty": "intermediate",
+    "sticking": "lR L R R / rL R L L",
+    "description": "A single paradiddle with a flam on the first note. Adds depth and accent to the standard paradiddle pattern.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-flammed-mill",
+    "name": "Single Flammed Mill",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "R lR L R / L rL R L",
+    "description": "A four-note pattern featuring a flam on the second stroke, alternating between hands. Focus on keeping the grace notes tight and the accents consistent.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-paradiddle-diddle",
+    "name": "Flam Paradiddle-diddle",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "lR L R R L L / rL R L L R R",
+    "description": "A paradiddle-diddle with a flam on the first stroke. Combines flam and diddled rudiment technique in a six-note grouping.",
+    "youtubeId": null
+  },
+  {
+    "id": "pataflafla",
+    "name": "Pataflafla",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "lR rL lR rL",
+    "description": "Four consecutive alternating flams. Every stroke is a flam, demanding clean and even flam technique from both hands at speed.",
+    "youtubeId": null
+  },
+  {
+    "id": "swiss-army-triplet",
+    "name": "Swiss Army Triplet",
+    "category": "Flams",
+    "difficulty": "intermediate",
+    "sticking": "lR R L / rL L R",
+    "description": "A three-note triplet grouping starting with a flam followed by two singles. Often used to create interesting triplet phrasing on the drum set.",
+    "youtubeId": null
+  },
+  {
+    "id": "inverted-flam-tap",
+    "name": "Inverted Flam Tap",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "R lR L rL",
+    "description": "The inversion of the Flam Tap — the tap precedes the flam rather than following it. Creates a syncopated feel and challenges flam mechanics in a new context.",
+    "youtubeId": null
+  },
+  {
+    "id": "flam-drag",
+    "name": "Flam Drag",
+    "category": "Flams",
+    "difficulty": "advanced",
+    "sticking": "lR llR / rL rrL",
+    "description": "A flam immediately followed by a drag on the primary-stroke hand. Combines flam and drag technique in a compact three-note grouping.",
+    "youtubeId": null
+  },
+  {
+    "id": "drag",
+    "name": "Drag (Ruff)",
+    "category": "Drags",
+    "difficulty": "intermediate",
+    "sticking": "ll R / rr L",
+    "description": "Two grace notes (a double stroke) played before a primary stroke. Creates a heavier, richer texture than a single flam grace note.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-drag-tap",
+    "name": "Single Drag Tap",
+    "category": "Drags",
+    "difficulty": "intermediate",
+    "sticking": "ll R L / rr L R",
+    "description": "A drag followed by a tap on the opposite hand. Keep the grace notes close to the primary stroke and the tap at a lower dynamic.",
+    "youtubeId": null
+  },
+  {
+    "id": "double-drag-tap",
+    "name": "Double Drag Tap",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "ll R ll R L / rr L rr L R",
+    "description": "Two consecutive drags followed by a single tap. Challenges both hands in a longer drag pattern requiring consistent grace notes throughout.",
+    "youtubeId": null
+  },
+  {
+    "id": "lesson-25",
+    "name": "Lesson 25",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "ll R L L / rr L R R",
+    "description": "A drag accent followed by two single taps. Named after a classic rudimental snare drum lesson. Focus on clean drags and even single strokes.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-dragadiddle",
+    "name": "Single Dragadiddle",
+    "category": "Drags",
+    "difficulty": "intermediate",
+    "sticking": "R R ll R R / L L rr L L",
+    "description": "A paradiddle-style pattern with a drag replacing the double stroke on beat three. Blends diddle and drag technique cleanly.",
+    "youtubeId": null
+  },
+  {
+    "id": "drag-paradiddle-1",
+    "name": "Drag Paradiddle #1",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "R ll R L R / L rr L R L",
+    "description": "A paradiddle with a drag inserted before the second stroke. The accented first stroke shifts hands with each repetition.",
+    "youtubeId": null
+  },
+  {
+    "id": "drag-paradiddle-2",
+    "name": "Drag Paradiddle #2",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "R ll R ll R L R / L rr L rr L R L",
+    "description": "An extension of Drag Paradiddle #1 with an additional drag added. One of the more challenging rudiments requiring precise grace note control throughout.",
+    "youtubeId": null
+  },
+  {
+    "id": "single-ratamacue",
+    "name": "Single Ratamacue",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "ll R L R L / rr L R L R",
+    "description": "A drag followed by four alternating strokes ending with a triplet feel. The ratamacue family is a cornerstone of traditional rudimental drumming.",
+    "youtubeId": null
+  },
+  {
+    "id": "double-ratamacue",
+    "name": "Double Ratamacue",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "ll R ll R L R L / rr L rr L R L R",
+    "description": "Two drags followed by four alternating singles. Extends the Single Ratamacue and demands arm endurance across long drag phrases.",
+    "youtubeId": null
+  },
+  {
+    "id": "triple-ratamacue",
+    "name": "Triple Ratamacue",
+    "category": "Drags",
+    "difficulty": "advanced",
+    "sticking": "ll R ll R ll R L R L / rr L rr L rr L R L R",
+    "description": "Three drags followed by four alternating singles. The most demanding of the ratamacue family, requiring stamina and clean drag execution from both hands.",
+    "youtubeId": null
+  }
+]
