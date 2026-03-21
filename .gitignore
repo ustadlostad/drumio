@@ -1,0 +1,8 @@
+node_modules/
+www/
+ios/App/build/
+ios/App/Pods/
+ios/App/App/public/
+ios/App/.xcode.env.local
+DerivedData/
+*.xcuserstate

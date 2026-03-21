@@ -1,0 +1,11 @@
+{
+  "appId": "com.drumio.app",
+  "appName": "Drumio",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "ios": {
+    "contentInset": "automatic"
+  }
+}
