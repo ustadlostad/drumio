@@ -38,3 +38,38 @@ Add practice exercises and drills
 - Build a drills/exercises page that reads from the JSON file
 - Link drills to the metronome (pre-fill recommended BPM when opening a drill)
 - Add difficulty level indicators (beginner / intermediate / advanced)
+
+
+## Iteration-5
+### Goal
+Adding example youtube videos for rudiments and drills.
+Apply small improvements
+
+### Tasks
+- Add youtube video links for rudimens and drills. If you can not find matching videos you can skip drills
+- Add filter to filter beginner, intermediate and advanced rudiments and drills
+
+## Iteration-6
+### Goal
+Improvement for drills
+
+### Tasks
+- When user press practise button on drills start bpm with advised bpm in drill description.
+- If drill has time advice in description, user can start practice with the bpm that described in the drill description.
+- Timer can be add to next to the metronome
+
+## Iteration-7
+### Goal
+- Improve Rudiments section.
+### Tasks
+- There are 40 rudiments that accepted by everyone. (PAS 40)
+- Add all these 40 rudiments to rudiments section.
+
+## Iteration-8
+### Goal
+- Make this app also runnable on ios platform.
+### Tasks
+- https://capacitorjs.com/docs/ios via following the instructions of capacitor web site make this application runnable on ios.
+
+## Iteration-9
+### Goal
