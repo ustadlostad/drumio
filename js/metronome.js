@@ -12,6 +12,19 @@ const BPM_MAX = 300;
 const SCHEDULE_AHEAD = 0.1;   // seconds to look ahead
 const SCHEDULER_INTERVAL = 25; // ms between scheduler ticks
 
+// ─── Time Signatures ──────────────────────────────────────────────
+// To add more time signatures in the future, simply append entries here.
+// beats      – total pulses per bar
+// noteValue  – denominator (4 = quarter, 8 = eighth)
+// accentBeats – 0-indexed pulse positions that receive the accent sound
+const TIME_SIGNATURES = [
+  { id: "4/4",  label: "4/4",  beats: 4,  noteValue: 4, accentBeats: [0] },
+  { id: "3/4",  label: "3/4",  beats: 3,  noteValue: 4, accentBeats: [0] },
+  { id: "2/4",  label: "2/4",  beats: 2,  noteValue: 4, accentBeats: [0] },
+  { id: "6/8",  label: "6/8",  beats: 6,  noteValue: 8, accentBeats: [0, 3] },
+  { id: "12/8", label: "12/8", beats: 12, noteValue: 8, accentBeats: [0, 3, 6, 9] },
+];
+
 // ─── Sound Synthesisers ───────────────────────────────────────────
 
 /** Returns a short noise buffer */
@@ -114,10 +127,11 @@ const SOUNDS = {
 
 class Metronome {
   constructor() {
-    this.bpm        = 100;
-    this.isPlaying  = false;
-    this.sound      = "click";
-    this.beatsPerBar = 4;
+    this.bpm           = 100;
+    this.isPlaying     = false;
+    this.sound         = "click";
+    this.timeSignature = TIME_SIGNATURES[0]; // default 4/4
+    this.beatsPerBar   = this.timeSignature.beats;
 
     this._audioCtx      = null;
     this._nextBeatTime  = 0;
@@ -167,6 +181,14 @@ class Metronome {
     if (SOUNDS[name]) this.sound = name;
   }
 
+  setTimeSignature(id) {
+    const sig = TIME_SIGNATURES.find(s => s.id === id);
+    if (!sig) return;
+    this.timeSignature = sig;
+    this.beatsPerBar   = sig.beats;
+    this._currentBeat  = 0;
+  }
+
   /** Tap Tempo — call on each tap, returns updated BPM */
   tap() {
     const now = performance.now();
@@ -197,7 +219,7 @@ class Metronome {
   _schedule() {
     const ctx = this._audioCtx;
     while (this._nextBeatTime < ctx.currentTime + SCHEDULE_AHEAD) {
-      const isAccent = this._currentBeat === 0;
+      const isAccent = this.timeSignature.accentBeats.includes(this._currentBeat);
       SOUNDS[this.sound](ctx, this._nextBeatTime, isAccent);
 
       // Fire visual callback slightly before the beat
@@ -208,7 +230,7 @@ class Metronome {
         if (this.onBeat) this.onBeat(beat, bpb, isAccent);
       }, delay);
 
-      this._nextBeatTime += 60 / this.bpm;
+      this._nextBeatTime += (60 / this.bpm) * (4 / this.timeSignature.noteValue);
       this._currentBeat  = (this._currentBeat + 1) % this.beatsPerBar;
     }
   }

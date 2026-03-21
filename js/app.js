@@ -30,13 +30,14 @@ function toggleTheme() {
 // ─── Metronome UI ─────────────────────────────────────────────────
 
 function initMetronomeUI() {
-  const playBtn      = document.getElementById("playBtn");
-  const tapBtn       = document.getElementById("tapBtn");
-  const bpmSlider    = document.getElementById("bpmSlider");
-  const bpmNumber    = document.getElementById("bpmNumber");
+  const playBtn       = document.getElementById("playBtn");
+  const tapBtn        = document.getElementById("tapBtn");
+  const bpmSlider     = document.getElementById("bpmSlider");
+  const bpmNumber     = document.getElementById("bpmNumber");
   const beatIndicator = document.getElementById("beatIndicator");
-  const soundBtns    = document.querySelectorAll(".sound-btn");
-  const nudgeBtns    = document.querySelectorAll(".nudge-btn");
+  const soundBtns     = document.querySelectorAll(".sound-btn");
+  const nudgeBtns     = document.querySelectorAll(".nudge-btn");
+  const timeSigSelect = document.getElementById("timeSigSelect");
 
   if (!playBtn) return; // metronome section not on this page
 
@@ -52,7 +53,19 @@ function initMetronomeUI() {
   }
   buildBeatDots(metronome.beatsPerBar);
 
-  // ── Update BPM display & slider fill ─────────────────────────
+  // ── Time signature dropdown ───────────────────────────────────
+  TIME_SIGNATURES.forEach((sig) => {
+    const opt = document.createElement("option");
+    opt.value = sig.id;
+    opt.textContent = sig.label;
+    timeSigSelect.appendChild(opt);
+  });
+  timeSigSelect.value = metronome.timeSignature.id;
+
+  timeSigSelect.addEventListener("change", () => {
+    metronome.setTimeSignature(timeSigSelect.value);
+    buildBeatDots(metronome.beatsPerBar);
+  });
   function syncBpm(value) {
     metronome.setBpm(value);
     const clamped = metronome.bpm;
