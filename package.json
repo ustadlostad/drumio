@@ -1,0 +1,17 @@
+{
+  "name": "drumio",
+  "version": "1.0.0",
+  "description": "A drum practice app for drummers",
+  "scripts": {
+    "build": "rsync -av --exclude='node_modules' --exclude='ios' --exclude='.git' --exclude='www' --exclude='*.md' --exclude='package.json' --exclude='package-lock.json' --exclude='capacitor.config.json' . www/",
+    "sync": "npm run build && npx cap sync",
+    "open:ios": "npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/ios": "^6.0.0"
+  }
+}
