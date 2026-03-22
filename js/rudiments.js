@@ -19,7 +19,7 @@ async function initRudiments() {
     const res  = await fetch("data/rudiments.json");
     allRudiments = await res.json();
   } catch (e) {
-    grid.innerHTML = `<p class="rudiments-empty">Could not load rudiments. Try refreshing.</p>`;
+    grid.innerHTML = `<p class="rudiments-empty">${t("rudiments.error")}</p>`;
     return;
   }
 
@@ -34,12 +34,14 @@ async function initRudiments() {
 function buildCategoryPills(toolbar) {
   const categories = ["All", ...new Set(allRudiments.map((r) => r.category))];
   const container  = toolbar.querySelector("[data-filter='category']");
+  container.setAttribute("aria-label", t("rudiments.filterCategory"));
   container.innerHTML = "";
 
   categories.forEach((cat) => {
     const btn = document.createElement("button");
-    btn.className  = "pill" + (cat === "All" ? " active" : "");
-    btn.textContent = cat;
+    btn.className   = "pill" + (cat === activeCategory ? " active" : "");
+    btn.dataset.cat = cat;
+    btn.textContent = cat === "All" ? t("filter.all") : cat;
     btn.addEventListener("click", () => {
       activeCategory = cat;
       container.querySelectorAll(".pill").forEach((p) => p.classList.remove("active"));
@@ -54,12 +56,14 @@ function buildCategoryPills(toolbar) {
 function buildDifficultyPills(toolbar) {
   const levels    = ["All", "beginner", "intermediate", "advanced"];
   const container = toolbar.querySelector("[data-filter='difficulty']");
+  container.setAttribute("aria-label", t("rudiments.filterDifficulty"));
   container.innerHTML = "";
 
   levels.forEach((lvl) => {
     const btn = document.createElement("button");
-    btn.className   = "pill" + (lvl === "All" ? " active" : "");
-    btn.textContent = lvl === "All" ? "All Levels" : lvl.charAt(0).toUpperCase() + lvl.slice(1);
+    btn.className    = "pill" + (lvl === activeDifficulty ? " active" : "");
+    btn.dataset.diff = lvl;
+    btn.textContent  = lvl === "All" ? t("filter.allLevels") : t("filter." + lvl);
     btn.addEventListener("click", () => {
       activeDifficulty = lvl;
       container.querySelectorAll(".pill").forEach((p) => p.classList.remove("active"));
@@ -68,6 +72,17 @@ function buildDifficultyPills(toolbar) {
     });
     container.appendChild(btn);
   });
+}
+
+/**
+ * Re-build both pill rows (called on language change to retranslate labels).
+ * Preserves the current activeCategory / activeDifficulty selection.
+ */
+function rebuildRudimentFilters() {
+  const toolbar = document.getElementById("rudimentsToolbar");
+  if (!toolbar || allRudiments.length === 0) return;
+  buildCategoryPills(toolbar);
+  buildDifficultyPills(toolbar);
 }
 // ─── Search ───────────────────────────────────────────────────────
 
@@ -100,11 +115,11 @@ function renderRudiments() {
   });
 
   if (countEl) {
-    countEl.textContent = `${filtered.length} of ${allRudiments.length} rudiment${allRudiments.length !== 1 ? "s" : ""}`;
+    countEl.textContent = t("rudiments.count", filtered.length, allRudiments.length);
   }
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div class="rudiments-empty">No rudiments match your filters.</div>`;
+    grid.innerHTML = `<div class="rudiments-empty">${t("rudiments.empty")}</div>`;
     return;
   }
 
@@ -125,14 +140,17 @@ function renderRudiments() {
 // ─── Card Template ────────────────────────────────────────────────
 
 function rudimentCardHTML(r) {
+  const lang = getCurrentLang();
+  const description = (lang === "en" || !r.description_tr) ? r.description : r.description_tr;
+
   const watchBtn = r.youtubeId
     ? `<button
         class="watch-btn"
         data-youtube-id="${escapeHTML(r.youtubeId)}"
         data-title="${escapeHTML(r.name)}"
         data-subtitle="${escapeHTML(r.category)}"
-        aria-label="Watch ${escapeHTML(r.name)} tutorial"
-      >&#9654; Watch</button>`
+        aria-label="${escapeHTML(t("rudiments.watchAria", r.name))}"
+      >&#9654; ${escapeHTML(t("rudiments.watch"))}</button>`
     : "";
 
   return `
@@ -142,10 +160,10 @@ function rudimentCardHTML(r) {
           <div class="rudiment-name">${escapeHTML(r.name)}</div>
           <div class="rudiment-category">${escapeHTML(r.category)}</div>
         </div>
-        <span class="diff-pill ${r.difficulty}">${r.difficulty}</span>
+        <span class="diff-pill ${r.difficulty}">${escapeHTML(t("filter." + r.difficulty))}</span>
       </div>
       <div class="rudiment-sticking">${escapeHTML(r.sticking)}</div>
-      <p class="rudiment-description">${escapeHTML(r.description)}</p>
+      <p class="rudiment-description">${escapeHTML(description)}</p>
       ${watchBtn ? `<div class="card-watch-row">${watchBtn}</div>` : ""}
     </article>
   `;

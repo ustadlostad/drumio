@@ -12,7 +12,8 @@
       "single-stroke-roll"
     ],
     "description": "Start at your minimum BPM, increase by 5 every 30 seconds until you reach the max, then work back down. Builds endurance and control across tempos.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Minimum BPM'den başlayın, her 30 saniyede 5 artırarak zirveye çıkın, ardından geri inin. Tempolara göre dayanıklılık ve kontrol geliştirir."
   },
   {
     "id": "double-stroke-builder",
@@ -27,7 +28,8 @@
       "double-stroke-roll"
     ],
     "description": "Play doubles slowly, focusing on letting the second stroke bounce naturally. Gradually increase tempo. Never sacrifice quality for speed.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Double'ları yavaş çalın, ikinci vuruşun doğal olarak zıplamasına izin verin. Tempoyu kademeli olarak artırın. Hız için kaliteden ödün vermeyin."
   },
   {
     "id": "alternating-hands-warmup",
@@ -41,8 +43,9 @@
     "rudiments": [
       "single-stroke-roll"
     ],
-    "description": "Play single strokes at a relaxed tempo for 5 minutes straight. Focus on even dynamics, relaxed grip, and wrist rebound \u2014 no tension.",
-    "youtubeId": null
+    "description": "Play single strokes at a relaxed tempo for 5 minutes straight. Focus on even dynamics, relaxed grip, and wrist rebound — no tension.",
+    "youtubeId": null,
+    "description_tr": "5 dakika boyunca rahat bir tempoda single stroke çalın. Eşit dinamiklere, gevşek tutuşa ve bilek zıplamasına odaklanın — gerginlik olmamalı."
   },
   {
     "id": "paradiddle-accent-pattern",
@@ -57,7 +60,8 @@
       "single-paradiddle"
     ],
     "description": "Play paradiddles while accenting the first note of each group (R accent, L, R, R). Then move the accent to beat 2, 3, and 4 in separate cycles. Builds dynamic control.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Her grubun ilk notasını aksanlandırarak paradiddle çalın (R aksan, L, R, R). Ardından aksanı 2., 3. ve 4. vuruşlara taşıyın. Dinamik kontrolü geliştirir."
   },
   {
     "id": "double-paradiddle-groove",
@@ -72,7 +76,8 @@
       "double-paradiddle"
     ],
     "description": "Loop the double paradiddle continuously, accenting each right hand stroke. Then swap: accent only left hand strokes. Great for triplet-feel groove phrases.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Double paradiddle'ı sürekli döngüde çalın, her sağ el vuruşunu aksanlandırın. Sonra değiştirin: sadece sol el vuruşlarını aksanlandırın. Üçlük hissinde groove cümleleri için idealdir."
   },
   {
     "id": "paradiddle-inversion-drill",
@@ -87,7 +92,8 @@
       "single-paradiddle"
     ],
     "description": "Cycle through all four inversions of the paradiddle (RLRR, LRLL, RLLR, LRRL) without stopping. One bar each. Develops sticking fluency.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Paradiddle'ın dört inversiyonunu (RLRR, LRLL, RLLR, LRRL) durmadan geçin. Her biri bir ölçü. Tutuş akıcılığını geliştirir."
   },
   {
     "id": "five-stroke-roll-phrase",
@@ -102,7 +108,8 @@
       "five-stroke-roll"
     ],
     "description": "Play continuous five stroke rolls. Focus on the accent alternating hands each repetition. Set a timer for 2 minutes and maintain consistent speed.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Sürekli five stroke roll çalın. Her tekrarda aksanın el değiştirmesine odaklanın. 2 dakika için zamanlayıcı kurun ve tutarlı hızı koruyun."
   },
   {
     "id": "speed-burst-singles",
@@ -117,7 +124,8 @@
       "single-stroke-roll"
     ],
     "description": "Play 4 bars at a comfortable tempo, then burst into maximum speed for 1 bar, then return. Repeat. Trains explosive speed without sacrificing control.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Rahat bir tempoda 4 ölçü çalın, ardından 1 ölçü maksimum hıza geçin, sonra geri dönün. Tekrar edin. Kontrolden ödün vermeden patlayıcı hız geliştirir."
   },
   {
     "id": "triple-stroke-triplet-loop",
@@ -131,8 +139,9 @@
     "rudiments": [
       "triple-stroke-roll"
     ],
-    "description": "Loop triple strokes in a triplet feel \u2014 RRR LLL, fitting naturally into 6/8 or 12/8 grooves. Increase BPM every 30 seconds.",
-    "youtubeId": null
+    "description": "Loop triple strokes in a triplet feel — RRR LLL, fitting naturally into 6/8 or 12/8 grooves. Increase BPM every 30 seconds.",
+    "youtubeId": null,
+    "description_tr": "Triple stroke'ları triplet hissinde döngüleyin — RRR LLL, 6/8 veya 12/8 groove'larına doğal uyum sağlar. Her 30 saniyede BPM artırın."
   },
   {
     "id": "flam-tap-groove",
@@ -147,7 +156,8 @@
       "flam-tap"
     ],
     "description": "Play continuous flam taps evenly. Focus on keeping the grace notes soft and consistent. Then apply between snare and hi-hat for a groove context.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Sürekli flam tap çalın. Grace note'ları yumuşak ve tutarlı tutmaya odaklanın. Ardından groove bağlamı için snare ve hi-hat arasında uygulayın."
   },
   {
     "id": "flam-accent-triplets",
@@ -162,7 +172,8 @@
       "flam-accent"
     ],
     "description": "Play flam accents in a steady triplet pulse. Accent the flam stroke clearly. Great for developing expressive dynamics and rudimental texture.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Flam accent'ları sabit triplet pulsunda çalın. Flam vuruşunu net aksanlandırın. İfadeli dinamikler ve rudimental doku geliştirmek için idealdir."
   },
   {
     "id": "drag-control",
@@ -178,7 +189,8 @@
       "single-drag-tap"
     ],
     "description": "Alternate between drag ruffs and single drag taps. Focus on placing the grace notes as close to the beat as possible without becoming a roll.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Drag ruff ve single drag tap arasında dönüşümlü çalın. Grace note'ları mümkün olduğunca vuruşa yakın konumlandırmaya odaklanın."
   },
   {
     "id": "rudiment-independence-starter",
@@ -194,7 +206,8 @@
       "single-stroke-roll"
     ],
     "description": "Play paradiddles on the hands while keeping a steady quarter-note pulse with your foot on the hi-hat. Develops coordination between limbs.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Hi-hat ile sabit dörtlük nabzını ayakla tutarken ellerde paradiddle çalın. Uzvlar arası koordinasyonu geliştirir."
   },
   {
     "id": "slow-practice-challenge",
@@ -211,7 +224,8 @@
       "single-paradiddle"
     ],
     "description": "Play your three core rudiments as slowly as possible. Slow practice reveals technique flaws that speed hides. Spend at least 5 minutes here.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Üç temel rudimentinizi mümkün olduğunca yavaş çalın. Yavaş çalışma, hızın gizlediği teknik hataları ortaya çıkarır. En az 5 dakika burada geçirin."
   },
   {
     "id": "even-strokes-challenge",
@@ -226,6 +240,7 @@
       "single-stroke-roll"
     ],
     "description": "Play single strokes and record yourself. Listen back: are all strokes truly the same volume? Adjust your weaker hand until you can't tell the difference.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Single stroke çalın ve kendinizi kaydedin. Geri dinleyin: tüm vuruşlar gerçekten aynı ses seviyesinde mi? Farkı anlayamaz hale gelene kadar zayıf elinizi ayarlayın."
   }
 ]

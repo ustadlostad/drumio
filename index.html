@@ -18,11 +18,15 @@
       <div class="container">
         <h1 class="logo">Drumio</h1>
         <nav class="nav">
-          <a href="#" class="nav-link active">Metronome</a>
-          <a href="#" class="nav-link">Rudiments</a>
-          <a href="#" class="nav-link">Drills</a>
+          <a href="#" class="nav-link active" data-section="Metronome" data-i18n="nav.metronome">Metronome</a>
+          <a href="#" class="nav-link" data-section="Rudiments" data-i18n="nav.rudiments">Rudiments</a>
+          <a href="#" class="nav-link" data-section="Drills" data-i18n="nav.drills">Drills</a>
         </nav>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <select class="lang-select" id="langSelect" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="tr">TR</option>
+        </select>
+        <button class="theme-toggle" id="themeToggle" data-i18n-aria="theme.toggleAria" aria-label="Toggle dark mode">
           ☀️
         </button>
       </div>
@@ -73,7 +77,7 @@
 
           <!-- Time signature selector -->
           <div class="time-sig-selector">
-            <label class="time-sig-label" for="timeSigSelect">Time Signature</label>
+            <label class="time-sig-label" for="timeSigSelect" data-i18n="metronome.timeSig">Time Signature</label>
             <select class="time-sig-select" id="timeSigSelect" aria-label="Time signature"></select>
           </div>
 
@@ -88,8 +92,8 @@
 
           <!-- Actions -->
           <div class="metronome-actions">
-            <button class="tap-btn" id="tapBtn">Tap Tempo</button>
-            <button class="play-btn" id="playBtn">Start</button>
+            <button class="tap-btn" id="tapBtn" data-i18n="metronome.tapTempo">Tap Tempo</button>
+            <button class="play-btn" id="playBtn" data-i18n="metronome.start">Start</button>
           </div>
 
         </div>
@@ -98,10 +102,10 @@
       <!-- ── Practice Timer ─────────────────────────────────── -->
       <section class="timer-section container" id="timer-section" hidden>
         <div class="card timer-card">
-          <h2 class="timer-title">Practice Timer</h2>
+          <h2 class="timer-title" data-i18n="timer.title">Practice Timer</h2>
           <div class="timer-display" id="timerDisplay">05:00</div>
           <div class="timer-set">
-            <span class="timer-label">Set duration</span>
+            <span class="timer-label" data-i18n="timer.setDuration">Set duration</span>
             <div class="timer-inputs">
               <input
                 type="number"
@@ -123,7 +127,7 @@
                 aria-label="Seconds"
               />
             </div>
-            <span class="timer-hint">Syncs with metronome — starts &amp; stops automatically</span>
+            <span class="timer-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
           </div>
         </div>
       </section>
@@ -137,6 +141,7 @@
             class="search-input"
             id="rudimentSearch"
             placeholder="Search rudiments…"
+            data-i18n-placeholder="rudiments.search"
             aria-label="Search rudiments"
           />
           <div class="filter-pills" data-filter="category" role="group" aria-label="Filter by category"></div>
@@ -158,6 +163,7 @@
             class="search-input"
             id="drillSearch"
             placeholder="Search drills…"
+            data-i18n-placeholder="drills.search"
             aria-label="Search drills"
           />
           <div class="filter-pills" data-filter="category" role="group" aria-label="Filter by category"></div>
@@ -174,10 +180,11 @@
 
     <footer class="site-footer">
       <div class="container">
-        <p>Drumio &mdash; Keep the beat.</p>
+        <p>Drumio &mdash; <span data-i18n="footer.tagline">Keep the beat.</span></p>
       </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/metronome.js"></script>
     <script src="js/rudiments.js"></script>

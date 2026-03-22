@@ -130,7 +130,7 @@ function initMetronomeUI() {
   // ── Play / Stop ──────────────────────────────────────────────
   playBtn.addEventListener("click", () => {
     metronome.toggle();
-    playBtn.textContent = metronome.isPlaying ? "Stop" : "Start";
+    playBtn.textContent = metronome.isPlaying ? t("metronome.stop") : t("metronome.start");
     playBtn.classList.toggle("playing", metronome.isPlaying);
   });
 
@@ -212,7 +212,7 @@ function initMetronomeUI() {
           // Stop metronome when countdown finishes
           if (metronome.isPlaying) {
             metronome.stop();
-            playBtn.textContent = "Start";
+            playBtn.textContent = t("metronome.start");
             playBtn.classList.remove("playing");
           }
         }
@@ -273,25 +273,73 @@ function showSection(name) {
   const target = document.getElementById(SECTIONS[name]);
   if (target) target.hidden = false;
 
-  // Update nav links
+  // Update nav links — compare using data-section (language-independent)
   document.querySelectorAll(".nav-link").forEach((a) => {
-    a.classList.toggle("active", a.textContent.trim() === name);
+    a.classList.toggle("active", a.dataset.section === name);
   });
 
   // Lazy-init sections
   if (!_initialised.has(name)) {
     _initialised.add(name);
-    if (name === "Rudiments") initRudiments();    if (name === "Drills") initDrills();  }
+    if (name === "Rudiments") initRudiments();
+    if (name === "Drills") initDrills();
+  }
 }
 
 function initNav() {
   document.querySelectorAll(".nav-link").forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
-      showSection(a.textContent.trim());
+      showSection(a.dataset.section);
     });
   });
 }
+
+// ─── i18n ─────────────────────────────────────────────────────────
+
+/**
+ * Update all static elements tagged with data-i18n / data-i18n-placeholder
+ * / data-i18n-aria, and sync any dynamic UI that references translated text.
+ */
+function applyTranslations() {
+  // textContent
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  // placeholder
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+  // aria-label
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    el.setAttribute("aria-label", t(el.dataset.i18nAria));
+  });
+  // Play button text depends on metronome state
+  const playBtn = document.getElementById("playBtn");
+  if (playBtn) {
+    playBtn.textContent = metronome.isPlaying ? t("metronome.stop") : t("metronome.start");
+  }
+}
+
+function initLangSwitcher() {
+  const select = document.getElementById("langSelect");
+  if (!select) return;
+  select.value = getCurrentLang();
+  select.addEventListener("change", () => setLanguage(select.value));
+}
+
+// Re-apply translations and re-render all initialised sections on lang change
+document.addEventListener("languagechange", () => {
+  applyTranslations();
+  if (_initialised.has("Rudiments")) {
+    rebuildRudimentFilters();
+    renderRudiments();
+  }
+  if (_initialised.has("Drills")) {
+    rebuildDrillFilters();
+    renderDrills();
+  }
+});
 
 // ─── Init ─────────────────────────────────────────────────────────
 
@@ -305,6 +353,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Navigation
   initNav();
+
+  // Language switcher
+  initLangSwitcher();
+
+  // Apply initial translations (English defaults already in HTML, but this
+  // ensures the applyTranslations path is wired for future language changes)
+  applyTranslations();
 
   // Show default section & init metronome
   showSection("Metronome");
