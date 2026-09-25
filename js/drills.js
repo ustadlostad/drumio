@@ -20,7 +20,7 @@ async function initDrills() {
     const res = await fetch("data/drills.json");
     allDrills = await res.json();
   } catch (e) {
-    grid.innerHTML = `<p class="drills-empty">Could not load drills. Try refreshing.</p>`;
+    grid.innerHTML = `<p class="drills-empty">${t("drills.error")}</p>`;
     return;
   }
 
@@ -39,8 +39,9 @@ function buildDrillCategoryPills(toolbar) {
 
   categories.forEach((cat) => {
     const btn = document.createElement("button");
-    btn.className   = "pill" + (cat === "All" ? " active" : "");
-    btn.textContent = cat;
+    btn.className   = "pill" + (cat === activeDrillCategory ? " active" : "");
+    btn.dataset.cat = cat;
+    btn.textContent = cat === "All" ? t("filter.all") : cat;
     btn.addEventListener("click", () => {
       activeDrillCategory = cat;
       container.querySelectorAll(".pill").forEach((p) => p.classList.remove("active"));
@@ -60,8 +61,9 @@ function buildDrillDifficultyPills(toolbar) {
 
   levels.forEach((lvl) => {
     const btn = document.createElement("button");
-    btn.className   = "pill" + (lvl === "All" ? " active" : "");
-    btn.textContent = lvl === "All" ? "All Levels" : lvl.charAt(0).toUpperCase() + lvl.slice(1);
+    btn.className    = "pill" + (lvl === activeDrillDifficulty ? " active" : "");
+    btn.dataset.diff = lvl;
+    btn.textContent  = lvl === "All" ? t("filter.allLevels") : t("filter." + lvl);
     btn.addEventListener("click", () => {
       activeDrillDifficulty = lvl;
       container.querySelectorAll(".pill").forEach((p) => p.classList.remove("active"));
@@ -70,6 +72,17 @@ function buildDrillDifficultyPills(toolbar) {
     });
     container.appendChild(btn);
   });
+}
+
+/**
+ * Re-build both pill rows (called on language change to retranslate labels).
+ * Preserves the current activeDrillCategory / activeDrillDifficulty selection.
+ */
+function rebuildDrillFilters() {
+  const toolbar = document.getElementById("drillsToolbar");
+  if (!toolbar || allDrills.length === 0) return;
+  buildDrillCategoryPills(toolbar);
+  buildDrillDifficultyPills(toolbar);
 }
 
 // ─── Search ───────────────────────────────────────────────────────
@@ -102,11 +115,11 @@ function renderDrills() {
   });
 
   if (countEl) {
-    countEl.textContent = `${filtered.length} of ${allDrills.length} drill${allDrills.length !== 1 ? "s" : ""}`;
+    countEl.textContent = t("drills.count", filtered.length, allDrills.length);
   }
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div class="drills-empty">No drills match your filters.</div>`;
+    grid.innerHTML = `<div class="drills-empty">${t("drills.empty")}</div>`;
     return;
   }
 
@@ -135,6 +148,9 @@ function renderDrills() {
 // ─── Card Template ────────────────────────────────────────────────
 
 function drillCardHTML(d) {
+  const lang = getCurrentLang();
+  const description = (lang === "en" || !d.description_tr) ? d.description : d.description_tr;
+
   const tags = d.rudiments
     .map((id) => `<span class="rudiment-tag">${escapeHTML(id.replace(/-/g, " "))}</span>`)
     .join("");
@@ -147,8 +163,8 @@ function drillCardHTML(d) {
         data-youtube-id="${escapeHTML(d.youtubeId)}"
         data-title="${escapeHTML(d.name)}"
         data-subtitle="${escapeHTML(d.category)}"
-        aria-label="Watch ${escapeHTML(d.name)} video"
-      >▶ Watch</button>`
+        aria-label="${escapeHTML(t("drills.watchAria", d.name))}"
+      >▶ ${escapeHTML(t("drills.watch"))}</button>`
     : "";
 
   return `
@@ -158,7 +174,7 @@ function drillCardHTML(d) {
           <div class="drill-name">${escapeHTML(d.name)}</div>
           <div class="drill-category">${escapeHTML(d.category)}</div>
         </div>
-        <span class="diff-pill ${d.difficulty}">${d.difficulty}</span>
+        <span class="diff-pill ${d.difficulty}">${escapeHTML(t("filter." + d.difficulty))}</span>
       </div>
 
       <div class="drill-bpm-range">
@@ -170,14 +186,14 @@ function drillCardHTML(d) {
 
       ${tags ? `<div class="drill-rudiments">${tags}</div>` : ""}
 
-      <p class="drill-description">${escapeHTML(d.description)}</p>
+      <p class="drill-description">${escapeHTML(description)}</p>
 
       <div class="drill-card-footer">
-        <span style="font-size:0.78rem;color:var(--color-text-muted)">Start at ${recommendedBpm} BPM</span>
+        <span style="font-size:0.78rem;color:var(--color-text-muted)">${escapeHTML(t("drills.startAt", recommendedBpm))}</span>
         <div style="display:flex;gap:0.5rem;align-items:center;">
           ${watchBtn}
-          <button class="practise-btn" data-bpm="${recommendedBpm}" aria-label="Practise ${escapeHTML(d.name)} at ${recommendedBpm} BPM">
-            ▶ Practise
+          <button class="practise-btn" data-bpm="${recommendedBpm}" aria-label="${escapeHTML(t("drills.practiseAria", d.name, recommendedBpm))}">
+            ▶ ${escapeHTML(t("drills.practise"))}
           </button>
         </div>
       </div>
@@ -213,7 +229,7 @@ function openMetronomeWithBpm(bpm) {
     metronome.start();
     const playBtn = document.getElementById("playBtn");
     if (playBtn) {
-      playBtn.textContent = "Stop";
+      playBtn.textContent = t("metronome.stop");
       playBtn.classList.add("playing");
     }
   }
@@ -230,7 +246,7 @@ function showBpmToast(bpm) {
     toast.className = "bpm-toast";
     document.body.appendChild(toast);
   }
-  toast.textContent = `Metronome set to ${bpm} BPM`;
+  toast.textContent = t("drills.toast", bpm);
   toast.classList.add("visible");
   clearTimeout(toast._timer);
   toast._timer = setTimeout(() => toast.classList.remove("visible"), 2500);

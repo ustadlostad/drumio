@@ -6,7 +6,8 @@
     "difficulty": "beginner",
     "sticking": "R L R L R L R L",
     "description": "The most fundamental rudiment. Alternate single strokes between hands at an even velocity. The foundation of all drumming.",
-    "youtubeId": "Oy9cGUxI1o0"
+    "youtubeId": "Oy9cGUxI1o0",
+    "description_tr": "En temel rudiment. Her iki el arasında eşit kuvvette tek vuruşları dönüşümlü yapın. Tüm davulculuğun temeli."
   },
   {
     "id": "single-stroke-four",
@@ -15,7 +16,8 @@
     "difficulty": "beginner",
     "sticking": "R L R L",
     "description": "Four alternating single strokes. Focus on even spacing and consistent volume across both hands.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Dört dönüşümlü tek vuruş. Her iki elde eşit aralık ve tutarlı ses seviyesine odaklanın."
   },
   {
     "id": "single-stroke-seven",
@@ -24,7 +26,8 @@
     "difficulty": "intermediate",
     "sticking": "R L R L R L R",
     "description": "Seven alternating strokes starting with the right hand. Great for developing linear phrases and odd-grouping phrasing.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Sağ elle başlayan yedi dönüşümlü vuruş. Lineer cümleler ve tek sayılı gruplama için idealdir."
   },
   {
     "id": "multiple-bounce-roll",
@@ -33,7 +36,8 @@
     "difficulty": "intermediate",
     "sticking": "R~~~ L~~~",
     "description": "A closed roll where each hand produces multiple controlled bounces per stroke. Apply consistent pressure to achieve a smooth, sustained sound.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Her el başına birden fazla kontrollü zıplama üreten kapalı roll. Düzgün ve sürekli bir ses elde etmek için tutarlı basınç uygulayın."
   },
   {
     "id": "triple-stroke-roll",
@@ -42,7 +46,8 @@
     "difficulty": "intermediate",
     "sticking": "R R R L L L",
     "description": "Three consecutive strokes per hand. Builds on double strokes and is great for triplet-based phrasing and fills.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Her el için üç ardışık vuruş. Double stroke üzerine inşa edilir; üçlük temelli cümleler ve fill için idealdir."
   },
   {
     "id": "double-stroke-roll",
@@ -51,7 +56,8 @@
     "difficulty": "beginner",
     "sticking": "R R L L R R L L",
     "description": "Two consecutive strokes with each hand. Play them open and controlled — the foundation for speed and endurance.",
-    "youtubeId": "Kg0ZpMUOFWo"
+    "youtubeId": "Kg0ZpMUOFWo",
+    "description_tr": "Her elde iki ardışık vuruş. Açık ve kontrollü çalın — hız ve dayanıklılığın temeli."
   },
   {
     "id": "five-stroke-roll",
@@ -60,7 +66,8 @@
     "difficulty": "intermediate",
     "sticking": "R R L L R",
     "description": "Two doubles followed by a single. The accent falls on the final single, which alternates hands on each repetition.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İki double ardından bir single. Aksan, her tekrarda el değiştiren son single üzerine düşer."
   },
   {
     "id": "six-stroke-roll",
@@ -69,7 +76,8 @@
     "difficulty": "intermediate",
     "sticking": "R L L R R L",
     "description": "Single-double-double pattern. The accents on the singles create a natural groove feel that translates well to the drum set.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Single-double-double pattern. Single vuruşlar üzerindeki aksanlar, davul setine iyi uyum sağlayan doğal bir groove hissi yaratır."
   },
   {
     "id": "seven-stroke-roll",
@@ -78,7 +86,8 @@
     "difficulty": "intermediate",
     "sticking": "R R L L R R L",
     "description": "Three doubles plus a single. Fits naturally into compound (6/8) meter phrasing and rudimental solos.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Üç double artı bir single. Bileşik (6/8) ölçü cümlelemesi ve rudimental sololar için doğal uyum sağlar."
   },
   {
     "id": "nine-stroke-roll",
@@ -87,7 +96,8 @@
     "difficulty": "intermediate",
     "sticking": "R R L L R R L L R",
     "description": "Four doubles plus a single. A classic rudimental roll that fits within a two-beat phrase at most tempos.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Dört double artı bir single. Çoğu tempoda iki vuruşluk bir cümleye sığan klasik rudimental roll."
   },
   {
     "id": "ten-stroke-roll",
@@ -96,7 +106,8 @@
     "difficulty": "intermediate",
     "sticking": "R R L L R R L L R L",
     "description": "Four doubles ending in two singles. The two accented singles at the end give it a distinctive punchy finish.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Dört double, iki single ile biter. Sonda aksan alan iki single, belirgin bir güçlü bitiriş sağlar."
   },
   {
     "id": "eleven-stroke-roll",
@@ -105,7 +116,8 @@
     "difficulty": "intermediate",
     "sticking": "R R L L R R L L R R L",
     "description": "Five doubles plus a single. Fits across three beats and is useful for extending phrases across bar lines.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Beş double artı bir single. Üç vuruşa yayılır ve cümleleri ölçü çizgisi üzerinden genişletmek için kullanışlıdır."
   },
   {
     "id": "thirteen-stroke-roll",
@@ -114,7 +126,8 @@
     "difficulty": "advanced",
     "sticking": "R R L L R R L L R R L L R",
     "description": "Six doubles plus a single. A longer roll that demands consistent doubles and precise control to the final accent.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Altı double artı bir single. Son aksana kadar tutarlı double ve hassas kontrol gerektiren uzun bir roll."
   },
   {
     "id": "fifteen-stroke-roll",
@@ -123,7 +136,8 @@
     "difficulty": "advanced",
     "sticking": "R R L L R R L L R R L L R R L",
     "description": "Seven doubles plus a single. Spans a full measure at most tempos and is a staple in rudimental corps drumming.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Yedi double artı bir single. Çoğu tempoda tam bir ölçüye yayılır; rudimental corps davulculuğunda temel bir roll'dür."
   },
   {
     "id": "seventeen-stroke-roll",
@@ -132,7 +146,8 @@
     "difficulty": "advanced",
     "sticking": "R R L L R R L L R R L L R R L L R",
     "description": "Eight doubles plus a single. The longest of the standard stroke rolls — requires strong endurance and consistent bounce.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Sekiz double artı bir single. Standart stroke roll'lerin en uzunu — güçlü dayanıklılık ve tutarlı zıplama gerektirir."
   },
   {
     "id": "single-paradiddle",
@@ -141,7 +156,8 @@
     "difficulty": "beginner",
     "sticking": "R L R R L R L L",
     "description": "A four-note grouping combining singles and a double (RLRR LRLL). One of the most versatile rudiments for the drum set.",
-    "youtubeId": "ZlkFkq9GUOM"
+    "youtubeId": "ZlkFkq9GUOM",
+    "description_tr": "Singles ve bir double'ı birleştiren dört notadan oluşan gruplama (RLRR LRLL). Davul seti için en çok yönlü rudimentlerden biri."
   },
   {
     "id": "double-paradiddle",
@@ -150,7 +166,8 @@
     "difficulty": "intermediate",
     "sticking": "R L R L R R L R L R L L",
     "description": "Six notes: four singles followed by a double (RLRLRR LRLRLL). Fits naturally into triplet-based grooves and fills.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Altı nota: dört single ardından bir double (RLRLRR LRLRLL). Üçlük temelli groove ve fill'lere doğal uyum sağlar."
   },
   {
     "id": "triple-paradiddle",
@@ -159,7 +176,8 @@
     "difficulty": "intermediate",
     "sticking": "R L R L R L R R L R L R L R L L",
     "description": "Eight notes: six singles followed by a double. Excellent for building hand independence, speed, and phrasing in 8th-note contexts.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Sekiz nota: altı single ardından bir double. El bağımsızlığı, hız ve sekizlik nota bağlamında cümleleme için mükemmeldir."
   },
   {
     "id": "single-paradiddle-diddle",
@@ -168,7 +186,8 @@
     "difficulty": "intermediate",
     "sticking": "R L R R L L",
     "description": "Six-note rudiment: a single then two doubles (RLRRLL LRLLRR). Essential for hi-hat ostinatos and 6/8 linear drumming.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Altı notalı rudiment: bir single ardından iki double (RLRRLL LRLLRR). Hi-hat ostinato ve 6/8 lineer davulculuk için vazgeçilmezdir."
   },
   {
     "id": "flam",
@@ -177,7 +196,8 @@
     "difficulty": "beginner",
     "sticking": "lR / rL",
     "description": "A grace note played just before a full stroke on the opposite hand. The grace note should be softer and very close in time to the primary stroke.",
-    "youtubeId": "w_RRf1DLXPU"
+    "youtubeId": "w_RRf1DLXPU",
+    "description_tr": "Tam vuruştan hemen önce karşı elde çalınan bir grace note. Grace note, ana vuruştan daha hafif ve ona çok yakın zamanlanmalıdır."
   },
   {
     "id": "flam-accent",
@@ -186,7 +206,8 @@
     "difficulty": "intermediate",
     "sticking": "lR L R / rL R L",
     "description": "A flam on beat one of a triplet, followed by two single strokes. The flam accent alternates each grouping and is a classic in rudimental drumming.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Üçlüğün birinci vuruşuna flam, ardından iki single stroke. Flam accent her grupta el değiştirir; rudimental davulculuğun klasiğidir."
   },
   {
     "id": "flam-tap",
@@ -195,7 +216,8 @@
     "difficulty": "intermediate",
     "sticking": "lR R / rL L",
     "description": "A flam followed by a tap with the same hand. Accent the flam, keep the tap soft. A great rudiment for building hand consistency.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Flam ardından aynı elde bir tap. Flam'a aksan verin, tap'ı yumuşak tutun. El tutarlılığı geliştirmek için harika bir rudiment."
   },
   {
     "id": "flamacue",
@@ -204,7 +226,8 @@
     "difficulty": "advanced",
     "sticking": "lR L rL R",
     "description": "A five-note rudiment with flams on the first and fourth strokes. The accent shifts between hands, creating a rich classical snare drum texture.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Birinci ve dördüncü vuruşlarda flam olan beş notalı rudiment. Aksan eller arasında değişir; zengin klasik snare drum dokusu yaratır."
   },
   {
     "id": "flam-paradiddle",
@@ -213,7 +236,8 @@
     "difficulty": "intermediate",
     "sticking": "lR L R R / rL R L L",
     "description": "A single paradiddle with a flam on the first note. Adds depth and accent to the standard paradiddle pattern.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İlk nota üzerinde flam olan single paradiddle. Standart paradiddle pattern'ına derinlik ve aksan katar."
   },
   {
     "id": "single-flammed-mill",
@@ -222,7 +246,8 @@
     "difficulty": "advanced",
     "sticking": "R lR L R / L rL R L",
     "description": "A four-note pattern featuring a flam on the second stroke, alternating between hands. Focus on keeping the grace notes tight and the accents consistent.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İkinci vuruşta flam bulunan, eller arasında dönüşümlü dört notalı pattern. Grace note'ları sıkı tutmaya ve aksanları tutarlı yapmaya odaklanın."
   },
   {
     "id": "flam-paradiddle-diddle",
@@ -231,7 +256,8 @@
     "difficulty": "advanced",
     "sticking": "lR L R R L L / rL R L L R R",
     "description": "A paradiddle-diddle with a flam on the first stroke. Combines flam and diddled rudiment technique in a six-note grouping.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İlk vuruşta flam olan paradiddle-diddle. Altı notalı bir grupta flam ve diddle rudiment tekniğini birleştirir."
   },
   {
     "id": "pataflafla",
@@ -240,7 +266,8 @@
     "difficulty": "advanced",
     "sticking": "lR rL lR rL",
     "description": "Four consecutive alternating flams. Every stroke is a flam, demanding clean and even flam technique from both hands at speed.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Art arda dört dönüşümlü flam. Her vuruş bir flam'dır; hızda her iki elden temiz ve eşit flam tekniği gerektirir."
   },
   {
     "id": "swiss-army-triplet",
@@ -249,7 +276,8 @@
     "difficulty": "intermediate",
     "sticking": "lR R L / rL L R",
     "description": "A three-note triplet grouping starting with a flam followed by two singles. Often used to create interesting triplet phrasing on the drum set.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Flam ardından iki single'dan oluşan üç notalı triplet gruplaması. Davul setinde ilginç triplet cümlelemeleri oluşturmak için sıklıkla kullanılır."
   },
   {
     "id": "inverted-flam-tap",
@@ -258,7 +286,8 @@
     "difficulty": "advanced",
     "sticking": "R lR L rL",
     "description": "The inversion of the Flam Tap — the tap precedes the flam rather than following it. Creates a syncopated feel and challenges flam mechanics in a new context.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Flam Tap'ın tersi — tap flam'dan sonra değil önce gelir. Senkoplu bir his yaratır ve yeni bir bağlamda flam mekaniğine meydan okur."
   },
   {
     "id": "flam-drag",
@@ -267,7 +296,8 @@
     "difficulty": "advanced",
     "sticking": "lR llR / rL rrL",
     "description": "A flam immediately followed by a drag on the primary-stroke hand. Combines flam and drag technique in a compact three-note grouping.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Flam ardından ana vuruş eliyle drag. Flam ve drag tekniğini kompakt üç notalı bir grupta birleştirir."
   },
   {
     "id": "drag",
@@ -276,7 +306,8 @@
     "difficulty": "intermediate",
     "sticking": "ll R / rr L",
     "description": "Two grace notes (a double stroke) played before a primary stroke. Creates a heavier, richer texture than a single flam grace note.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Ana vuruştan önce çalınan iki grace note (double stroke). Tek bir flam grace note'undan daha ağır ve zengin bir doku yaratır."
   },
   {
     "id": "single-drag-tap",
@@ -285,7 +316,8 @@
     "difficulty": "intermediate",
     "sticking": "ll R L / rr L R",
     "description": "A drag followed by a tap on the opposite hand. Keep the grace notes close to the primary stroke and the tap at a lower dynamic.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Drag ardından karşı elde tap. Grace note'ları ana vuruşa yakın tutun, tap'ı düşük dinamikte çalın."
   },
   {
     "id": "double-drag-tap",
@@ -294,7 +326,8 @@
     "difficulty": "advanced",
     "sticking": "ll R ll R L / rr L rr L R",
     "description": "Two consecutive drags followed by a single tap. Challenges both hands in a longer drag pattern requiring consistent grace notes throughout.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İki ardışık drag ardından tek bir tap. Boyunca tutarlı grace note gerektiren uzun drag pattern'ında her iki eli de zorlayan bir rudimenttir."
   },
   {
     "id": "lesson-25",
@@ -303,7 +336,8 @@
     "difficulty": "advanced",
     "sticking": "ll R L L / rr L R R",
     "description": "A drag accent followed by two single taps. Named after a classic rudimental snare drum lesson. Focus on clean drags and even single strokes.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Drag accent ardından iki single tap. Klasik bir rudimental snare drum dersinden adını almıştır. Temiz draglara ve eşit single stroke'lara odaklanın."
   },
   {
     "id": "single-dragadiddle",
@@ -312,7 +346,8 @@
     "difficulty": "intermediate",
     "sticking": "R R ll R R / L L rr L L",
     "description": "A paradiddle-style pattern with a drag replacing the double stroke on beat three. Blends diddle and drag technique cleanly.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Üçüncü vuruşta double stroke yerine drag olan paradiddle tarzı pattern. Diddle ve drag tekniğini temiz bir şekilde birleştirir."
   },
   {
     "id": "drag-paradiddle-1",
@@ -321,7 +356,8 @@
     "difficulty": "advanced",
     "sticking": "R ll R L R / L rr L R L",
     "description": "A paradiddle with a drag inserted before the second stroke. The accented first stroke shifts hands with each repetition.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İkinci vuruştan önce drag eklenmiş paradiddle. Aksan alan ilk vuruş, her tekrarda el değiştirir."
   },
   {
     "id": "drag-paradiddle-2",
@@ -330,7 +366,8 @@
     "difficulty": "advanced",
     "sticking": "R ll R ll R L R / L rr L rr L R L",
     "description": "An extension of Drag Paradiddle #1 with an additional drag added. One of the more challenging rudiments requiring precise grace note control throughout.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Ek bir drag eklenmiş Drag Paradiddle #1'in genişletilmiş hali. Boyunca hassas grace note kontrolü gerektiren zorlu rudimentlerden biridir."
   },
   {
     "id": "single-ratamacue",
@@ -339,7 +376,8 @@
     "difficulty": "advanced",
     "sticking": "ll R L R L / rr L R L R",
     "description": "A drag followed by four alternating strokes ending with a triplet feel. The ratamacue family is a cornerstone of traditional rudimental drumming.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Drag ardından triplet hissiyle biten dört dönüşümlü vuruş. Ratamacue ailesi, geleneksel rudimental davulculuğun köşe taşıdır."
   },
   {
     "id": "double-ratamacue",
@@ -348,7 +386,8 @@
     "difficulty": "advanced",
     "sticking": "ll R ll R L R L / rr L rr L R L R",
     "description": "Two drags followed by four alternating singles. Extends the Single Ratamacue and demands arm endurance across long drag phrases.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "İki drag ardından dört dönüşümlü single. Single Ratamacue'yu genişletir; uzun drag cümlelerinde kol dayanıklılığı gerektirir."
   },
   {
     "id": "triple-ratamacue",
@@ -357,6 +396,7 @@
     "difficulty": "advanced",
     "sticking": "ll R ll R ll R L R L / rr L rr L rr L R L R",
     "description": "Three drags followed by four alternating singles. The most demanding of the ratamacue family, requiring stamina and clean drag execution from both hands.",
-    "youtubeId": null
+    "youtubeId": null,
+    "description_tr": "Üç drag ardından dört dönüşümlü single. Ratamacue ailesinin en zorlu rudimenti; her iki elden dayanıklılık ve temiz drag çalımı gerektirir."
   }
 ]

@@ -20,7 +20,7 @@
     _modal.className = "modal-overlay";
     _modal.setAttribute("role", "dialog");
     _modal.setAttribute("aria-modal", "true");
-    _modal.setAttribute("aria-label", "Video player");
+    _modal.setAttribute("aria-label", t("modal.playerAria"));
 
     _modal.innerHTML = `
       <div class="modal-box">
@@ -29,7 +29,7 @@
             <div class="modal-title" id="modalTitle"></div>
             <div class="modal-title-sub" id="modalSubtitle"></div>
           </div>
-          <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close video">✕</button>
+          <button class="modal-close-btn" id="modalCloseBtn" aria-label="${t("modal.closeAria")}">&#x2715;</button>
         </div>
         <div class="modal-video-wrap">
           <iframe
@@ -42,7 +42,7 @@
         </div>
         <div class="modal-footer">
           <a class="modal-yt-link" id="modalYtLink" href="#" target="_blank" rel="noopener">
-            ↗ Open on YouTube
+            ${t("modal.openYoutube")}
           </a>
         </div>
       </div>
@@ -66,6 +66,15 @@
     // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && _modal.classList.contains("open")) closeVideoModal();
+    });
+
+    // Update translated text on language change
+    document.addEventListener("languagechange", () => {
+      if (!_modal) return;
+      _modal.setAttribute("aria-label", t("modal.playerAria"));
+      const closeBtn = document.getElementById("modalCloseBtn");
+      if (closeBtn) closeBtn.setAttribute("aria-label", t("modal.closeAria"));
+      if (_ytLink) _ytLink.textContent = t("modal.openYoutube");
     });
   }
 
