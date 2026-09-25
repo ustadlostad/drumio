@@ -69,6 +69,8 @@ button:active {
   position: sticky;
   top: 0;
   z-index: 100;
+  /* Clear the iOS status bar / notch (0 on other platforms). */
+  padding-top: env(safe-area-inset-top);
 }
 
 .site-header .container {
