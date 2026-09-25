@@ -6,3 +6,7 @@ ios/App/App/public/
 ios/App/.xcode.env.local
 DerivedData/
 *.xcuserstate
+
+# macOS / editor
+.DS_Store
+.vscode/

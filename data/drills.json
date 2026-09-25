@@ -8,6 +8,11 @@
       "min": 60,
       "max": 120
     },
+    "ramp": {
+      "step": 5,
+      "everySeconds": 30,
+      "returnToStart": true
+    },
     "rudiments": [
       "single-stroke-roll"
     ],
@@ -23,6 +28,11 @@
     "bpmRange": {
       "min": 50,
       "max": 100
+    },
+    "ramp": {
+      "step": 5,
+      "everySeconds": 60,
+      "returnToStart": false
     },
     "rudiments": [
       "double-stroke-roll"
@@ -135,6 +145,11 @@
     "bpmRange": {
       "min": 80,
       "max": 160
+    },
+    "ramp": {
+      "step": 5,
+      "everySeconds": 30,
+      "returnToStart": false
     },
     "rudiments": [
       "triple-stroke-roll"

@@ -94,6 +94,12 @@
   background-color: var(--color-surface-alt);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.rudiment-tag:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* ─── Description ─────────────────────────────────────────────────── */
@@ -132,28 +138,9 @@
   background-color: var(--color-accent-hover);
 }
 
-/* ─── Watch button ────────────────────────────────────────────────── */
-
-.drill-card .watch-btn {
-  background-color: transparent;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  padding: 0.4rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  border-radius: 20px;
-  letter-spacing: 0.3px;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
-}
-
-.drill-card .watch-btn:hover {
-  background-color: var(--color-accent);
-  color: #fff;
-}
-
 /* ─── Feedback toast ──────────────────────────────────────────────── */
 
-.bpm-toast {
+.toast {
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
@@ -171,16 +158,16 @@
   transition: opacity 0.2s ease;
 }
 
-.bpm-toast.visible {
+.toast.visible {
   opacity: 1;
 }
 
-/* ─── Empty state ─────────────────────────────────────────────────── */
-
-.drills-empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem 1rem;
+.drill-start-at {
+  font-size: 0.78rem;
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+}
+
+.drill-ramp {
+  font-weight: 500;
+  color: var(--color-text-muted);
 }

@@ -148,17 +148,60 @@
 }
 
 .rudiment-sticking {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--color-accent);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.5rem;
   background-color: var(--color-accent-soft);
   border-radius: 6px;
-  padding: 0.3rem 0.6rem;
-  display: inline-block;
-  word-break: break-all;
+  padding: 0.7rem 0.6rem 0.3rem;
 }
+
+/* ─── Sticking notation (cards and exercise lane) ────────────────── */
+
+.stk-group {
+  display: inline-flex;
+  gap: 0.1rem;
+}
+
+.stk {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  min-width: 1.1em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.stk.left {
+  color: var(--color-accent);
+}
+
+.stk.rest {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.stk.accent::before {
+  content: ">";
+  position: absolute;
+  top: -0.85em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+  color: var(--color-text-muted);
+}
+
+.stk .grace {
+  font-size: 0.62em;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-right: 1px;
+}
+
 
 .rudiment-description {
   font-size: 0.85rem;
@@ -168,18 +211,33 @@
 
 /* ─── Watch button ─────────────────────────────────────────────── */
 
-.card-watch-row {
-  padding-top: 0.4rem;
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.rudiment-card .card-actions {
+  margin-top: auto;
+  padding-top: 0.6rem;
   border-top: 1px solid var(--color-border);
 }
 
+.rudiment-card.highlight,
+.drill-card.highlight {
+  box-shadow: 0 0 0 3px var(--color-accent);
+}
+
 .watch-btn {
+  display: inline-block;
   background-color: transparent;
   color: var(--color-accent);
   border: 1px solid var(--color-accent);
   padding: 0.3rem 0.85rem;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
+  line-height: 1.5;
   border-radius: 20px;
   letter-spacing: 0.3px;
   transition: background-color 0.15s ease, color 0.15s ease;
@@ -192,7 +250,7 @@
 
 /* ─── Empty state ────────────────────────────────────────────────── */
 
-.rudiments-empty {
+.catalog-empty {
   grid-column: 1 / -1;
   text-align: center;
   padding: 3rem 1rem;
@@ -200,7 +258,8 @@
   font-size: 0.95rem;
 }
 
-.rudiments-count {
+.rudiments-count,
+.drills-count {
   font-size: 0.82rem;
   color: var(--color-text-muted);
   margin-bottom: 1rem;

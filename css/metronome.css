@@ -26,6 +26,10 @@
   background-color: var(--color-border);
   transition: background-color 0.05s ease, transform 0.05s ease,
     box-shadow 0.05s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .beat-dot.accent {
@@ -33,10 +37,122 @@
   height: 22px;
 }
 
-.beat-dot.active {
+.beat-dot.current {
   background-color: var(--color-accent);
-  transform: scale(1.25);
-  box-shadow: 0 0 10px var(--color-accent-soft);
+}
+
+.beat-dot.hit {
+  animation: beat-hit 0.14s ease-out;
+}
+
+@keyframes beat-hit {
+  from { transform: scale(1.35); box-shadow: 0 0 12px var(--color-accent); }
+  to   { transform: scale(1);    box-shadow: none; }
+}
+
+.beat-indicator.many {
+  gap: 0.45rem;
+}
+
+/* Hand labels (R/L) during a rudiment exercise */
+.beat-indicator.has-sticking .beat-dot {
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.beat-indicator.has-sticking .beat-dot.accent {
+  width: 36px;
+  height: 36px;
+}
+
+.beat-indicator.has-sticking .beat-dot.current {
+  color: #fff;
+}
+
+/* ─── Exercise bar & sticking lane ──────────────────────────────── */
+
+.exercise-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background-color: var(--color-accent-soft);
+}
+
+.exercise-bar[hidden],
+.sticking-lane[hidden] {
+  display: none;
+}
+
+.exercise-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.exercise-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.exercise-name {
+  font-weight: 700;
+}
+
+.exercise-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.chip-btn {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.chip-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.sticking-lane {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 0.9rem;
+  max-width: 100%;
+  padding-top: 0.6rem;
+}
+
+.sticking-lane .stk {
+  font-size: 1.15rem;
+  min-width: 1.5em;
+  padding: 0.1rem 0.2rem;
+  border-radius: 6px;
+  transition: background-color 0.05s ease;
+}
+
+.sticking-lane .stk.current {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.sticking-lane .stk.current.accent::before {
+  color: var(--color-accent);
 }
 
 /* ─── BPM Display ───────────────────────────────────────────────── */
@@ -49,6 +165,13 @@
 }
 
 .bpm-number {
+  width: 3.4em;
+  text-align: center;
+  font-family: inherit;
+  background: none;
+  border: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
   font-size: 5rem;
   font-weight: 800;
   line-height: 1;
@@ -64,7 +187,13 @@
   background-color: var(--color-surface-alt);
 }
 
-.bpm-number[contenteditable="true"] {
+.bpm-number::-webkit-inner-spin-button,
+.bpm-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bpm-number:focus {
   outline: 2px solid var(--color-accent);
   background-color: var(--color-surface-alt);
   cursor: text;
@@ -208,6 +337,7 @@
 
 .play-btn.playing {
   background-color: var(--color-text);
+  color: var(--color-bg);
 }
 
 .tap-btn {
@@ -231,19 +361,32 @@
 
 /* ─── Practice Timer ─────────────────────────────────────────────── */
 
-.timer-section {
-  margin-bottom: 2.5rem;
+.tool-section {
+  margin-bottom: 1.5rem;
 }
 
-.timer-card {
+.tool-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  padding: 1.75rem 1.5rem;
+  gap: 1.1rem;
+  padding: 1.5rem;
 }
 
-.timer-title {
+.tool-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.tool-title {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -323,21 +466,147 @@
   margin: 0 0.1rem;
 }
 
-.timer-hint {
-  font-size: 0.72rem;
-  color: var(--color-text-muted);
-  margin-top: 0.15rem;
+/* ─── Tempo trainer ──────────────────────────────────────────────── */
+
+.trainer-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.9rem 1.25rem;
+  transition: opacity 0.15s ease;
 }
 
-/* ─── Time Signature Selector ────────────────────────────────────── */
+.trainer-fields.disabled {
+  opacity: 0.45;
+}
 
-.time-sig-selector {
+.num-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.num-input-wrap {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.35rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8rem;
 }
 
-.time-sig-label {
+.num-input {
+  width: 4rem;
+  text-align: center;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.num-input:focus {
+  outline: 2px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.check-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  padding-bottom: 0.35rem;
+  cursor: pointer;
+}
+
+.check-field input {
+  accent-color: var(--color-accent);
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.switch-track {
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: var(--color-border);
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+.switch-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease;
+}
+
+.switch input:checked + .switch-track {
+  background-color: var(--color-accent);
+}
+
+.switch input:checked + .switch-track::after {
+  transform: translateX(18px);
+}
+
+.switch input:focus-visible + .switch-track {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ─── Time Signature & Subdivision ───────────────────────────────── */
+
+.metronome-selects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+}
+
+.select-field {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.shortcut-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.select-label {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -345,7 +614,7 @@
   color: var(--color-text-muted);
 }
 
-.time-sig-select {
+.metro-select {
   background-color: var(--color-surface-alt);
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -358,8 +627,8 @@
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.time-sig-select:hover,
-.time-sig-select:focus {
+.metro-select:hover,
+.metro-select:focus {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 2px var(--color-accent-soft);
 }
