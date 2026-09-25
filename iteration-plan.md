@@ -73,3 +73,28 @@ Improvement for drills
 
 ## Iteration-9
 ### Goal
+- Adding more time signatures to metronome.
+### Tasks
+- Add below time signatures for metronome.
+	•	4/4 (default)
+	•	3/4
+	•	2/4
+	•	6/8
+	•	12/8
+- User can select these signatures via using dropdown.
+- We can add more time signatures in the future that is why make desing expandable.
+
+## Iteration-10
+### Goal
+- Adding Turkish language support
+### Tasks
+- Add Turkish language option for the app.
+- It should be centralized and can be expandable for the future to support more languages.
+
+## Iteration-11
+### Goal
+- Add hand signs on the beat dots
+### Tasks
+- Add start exercise button for rudiments also. 
+- If user starts a exercise, hand signs needs to be visible on the beat dots according to exercise.
+- It should be syncronised with the metronome and etc..

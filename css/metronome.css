@@ -26,6 +26,10 @@
   background-color: var(--color-border);
   transition: background-color 0.05s ease, transform 0.05s ease,
     box-shadow 0.05s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .beat-dot.accent {
@@ -37,6 +41,24 @@
   background-color: var(--color-accent);
   transform: scale(1.25);
   box-shadow: 0 0 10px var(--color-accent-soft);
+}
+
+/* ─── Sticking labels (R/L) when exercise is active ────────────── */
+.beat-indicator.has-sticking .beat-dot {
+  width: 30px;
+  height: 30px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.beat-indicator.has-sticking .beat-dot.accent {
+  width: 36px;
+  height: 36px;
+}
+
+.beat-indicator.has-sticking .beat-dot.active {
+  color: #fff;
 }
 
 /* ─── BPM Display ───────────────────────────────────────────────── */

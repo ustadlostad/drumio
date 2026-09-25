@@ -42,8 +42,10 @@ const TRANSLATIONS = {
     'rudiments.count':    (n, total) => `${n} of ${total} rudiment${total !== 1 ? 's' : ''}`,
     'rudiments.empty':    'No rudiments match your filters.',
     'rudiments.error':    'Could not load rudiments. Try refreshing.',
-    'rudiments.watch':    'Watch',
-    'rudiments.watchAria':(name) => `Watch ${name} tutorial`,
+    'rudiments.watch':       'Watch',
+    'rudiments.watchAria':    (name) => `Watch ${name} tutorial`,
+    'rudiments.practise':     'Start Exercise',
+    'rudiments.practiseAria': (name) => `Start exercise for ${name}`,
 
     // Drills
     'drills.search':       'Search drills\u2026',
@@ -100,8 +102,10 @@ const TRANSLATIONS = {
     'rudiments.count':    (n, total) => `${total} rudimentten ${n} tanesi`,
     'rudiments.empty':    'Filtrelerinizle eşleşen rudiment bulunamadı.',
     'rudiments.error':    'Rudimentler yüklenemedi. Sayfayı yenilemeyi deneyin.',
-    'rudiments.watch':    'İzle',
-    'rudiments.watchAria':(name) => `${name} eğitimini izle`,
+    'rudiments.watch':       'İzle',
+    'rudiments.watchAria':    (name) => `${name} eğitimini izle`,
+    'rudiments.practise':     'Egzersiz Başlat',
+    'rudiments.practiseAria': (name) => `${name} için egzersiz başlat`,
 
     // Drills
     'drills.search':       'Egzersiz ara\u2026',

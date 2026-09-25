@@ -171,6 +171,24 @@
 .card-watch-row {
   padding-top: 0.4rem;
   border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rudiment-card .practise-btn {
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.rudiment-card .practise-btn:hover {
+  background-color: var(--color-accent-hover);
 }
 
 .watch-btn {

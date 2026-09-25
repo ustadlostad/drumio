@@ -204,6 +204,9 @@ function drillCardHTML(d) {
 // ─── Link to Metronome ────────────────────────────────────────────
 
 function openMetronomeWithBpm(bpm) {
+  // Clear any active rudiment sticking exercise
+  if (typeof clearSticking === "function") clearSticking();
+
   // Set the metronome BPM
   if (typeof metronome !== "undefined") {
     metronome.setBpm(bpm);

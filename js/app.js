@@ -27,6 +27,42 @@ function toggleTheme() {
   applyTheme(current === "dark" ? "light" : "dark");
 }
 
+// ─── Active Sticking (Exercise) ───────────────────────────────────
+
+let activeSticking    = [];  // parsed R/L array from selected rudiment
+let stickingBeatCount = 0;   // total beats fired since exercise started
+
+function parseSticking(str) {
+  return str.trim().split(/\s+/)
+    .map(tkn => tkn[0] && tkn[0].toUpperCase())
+    .filter(tkn => tkn === 'R' || tkn === 'L');
+}
+
+function clearSticking() {
+  activeSticking    = [];
+  stickingBeatCount = 0;
+  const bi = document.getElementById("beatIndicator");
+  if (!bi) return;
+  bi.classList.remove("has-sticking");
+  bi.querySelectorAll(".beat-dot").forEach(d => { d.textContent = ""; });
+}
+
+function openRudimentExercise(stickingStr) {
+  activeSticking    = parseSticking(stickingStr);
+  stickingBeatCount = 0;
+  const bi = document.getElementById("beatIndicator");
+  if (bi) bi.classList.add("has-sticking");
+  showSection("Metronome");
+  if (!metronome.isPlaying) {
+    metronome.start();
+    const playBtn = document.getElementById("playBtn");
+    if (playBtn) {
+      playBtn.textContent = t("metronome.stop");
+      playBtn.classList.add("playing");
+    }
+  }
+}
+
 // ─── Metronome UI ─────────────────────────────────────────────────
 
 function initMetronomeUI() {
@@ -156,7 +192,14 @@ function initMetronomeUI() {
   metronome.onBeat = (beatIndex) => {
     const dots = beatIndicator.querySelectorAll(".beat-dot");
     dots.forEach((d) => d.classList.remove("active"));
-    if (dots[beatIndex]) dots[beatIndex].classList.add("active");
+    if (dots[beatIndex]) {
+      dots[beatIndex].classList.add("active");
+      if (activeSticking.length > 0) {
+        dots[beatIndex].textContent =
+          activeSticking[stickingBeatCount % activeSticking.length];
+        stickingBeatCount++;
+      }
+    }
 
     // Remove active after short flash
     setTimeout(() => {
@@ -243,7 +286,7 @@ function initMetronomeUI() {
 
     // Hook into metronome lifecycle
     metronome.onStart = startTimer;
-    metronome.onStop  = stopTimer;
+    metronome.onStop  = () => { stopTimer(); clearSticking(); };
   })();
 }
 

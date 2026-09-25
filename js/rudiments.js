@@ -125,6 +125,13 @@ function renderRudiments() {
 
   grid.innerHTML = filtered.map((r) => rudimentCardHTML(r)).join("");
 
+  // Wire Start Exercise buttons
+  grid.querySelectorAll(".rudiment-practise-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openRudimentExercise(btn.dataset.sticking);
+    });
+  });
+
   // Wire Watch buttons
   grid.querySelectorAll(".watch-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -153,6 +160,13 @@ function rudimentCardHTML(r) {
       >&#9654; ${escapeHTML(t("rudiments.watch"))}</button>`
     : "";
 
+  const practiseBtn = `<button
+      class="practise-btn rudiment-practise-btn"
+      data-sticking="${escapeHTML(r.sticking)}"
+      data-name="${escapeHTML(r.name)}"
+      aria-label="${escapeHTML(t("rudiments.practiseAria", r.name))}"
+    >&#9654; ${escapeHTML(t("rudiments.practise"))}</button>`;
+
   return `
     <article class="card rudiment-card">
       <div class="rudiment-card-header">
@@ -164,7 +178,10 @@ function rudimentCardHTML(r) {
       </div>
       <div class="rudiment-sticking">${escapeHTML(r.sticking)}</div>
       <p class="rudiment-description">${escapeHTML(description)}</p>
-      ${watchBtn ? `<div class="card-watch-row">${watchBtn}</div>` : ""}
+      <div class="card-watch-row">
+        ${practiseBtn}
+        ${watchBtn}
+      </div>
     </article>
   `;
 }
