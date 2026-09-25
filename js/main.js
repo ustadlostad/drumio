@@ -3,6 +3,7 @@
  */
 
 import { LANGUAGES, getLanguage, setLanguage, applyTranslations } from "./core/i18n.js";
+import { metronome } from "./audio/metronome.js";
 import { initTheme } from "./ui/theme.js";
 import { initNav } from "./ui/nav.js";
 import { initMetronomeUI } from "./ui/metronome-ui.js";
@@ -28,6 +29,11 @@ function registerServiceWorker() {
   if (!("serviceWorker" in navigator) || isNative || location.protocol === "file:") return;
   navigator.serviceWorker.register("sw.js").catch((err) => console.warn("Service worker:", err));
 }
+
+// Unlock the AudioContext on the very first tap anywhere, so it is already
+// running by the time a nested control (e.g. a rudiment's Practise button)
+// tries to use it. Some WebViews only grant resume() on a raw gesture.
+document.addEventListener("pointerdown", () => metronome.unlock(), { once: true, passive: true });
 
 applyTranslations();
 initTheme();

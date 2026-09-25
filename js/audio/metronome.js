@@ -102,10 +102,22 @@ export class Metronome {
 
   // ─── Transport ──────────────────────────────────────────────────
 
+  /**
+   * Creates and resumes the AudioContext, tied to a raw user gesture
+   * (e.g. the first tap anywhere). Some WebViews only honour resume() when
+   * it happens directly on such a gesture, not on a button several
+   * function calls deep inside its handler, so main.js calls this on the
+   * very first pointerdown before any other click handling runs.
+   */
+  unlock() {
+    const ctx = this._ensureAudio();
+    if (ctx.state !== "running") ctx.resume().catch(() => {});
+  }
+
   start() {
     if (this.isPlaying) return;
     const ctx = this._ensureAudio();
-    if (ctx.state !== "running") ctx.resume();
+    if (ctx.state !== "running") ctx.resume().catch(() => {});
 
     this.isPlaying = true;
     this._index = 0;
