@@ -1,179 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#e63946" />
+    <meta name="description" content="Metronome, rudiments and drills for drummers." />
     <title>Drumio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="css/themes.css?v=11" />
-    <link rel="stylesheet" href="css/style.css?v=11" />
-    <link rel="stylesheet" href="css/metronome.css?v=11" />
-    <link rel="stylesheet" href="css/rudiments.css?v=11" />
-    <link rel="stylesheet" href="css/drills.css?v=11" />
-    <link rel="stylesheet" href="css/modal.css?v=11" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script>
+      // Apply the saved theme before first paint to avoid a light-mode flash.
+      (function () {
+        var theme = null;
+        try { theme = (JSON.parse(localStorage.getItem("drumio-settings")) || {}).theme; } catch (e) {}
+        try { theme = theme || localStorage.getItem("drumio-theme"); } catch (e) {}
+        if (!theme) theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/metronome.css" />
+    <link rel="stylesheet" href="css/rudiments.css" />
+    <link rel="stylesheet" href="css/drills.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <script type="module" src="js/main.js"></script>
   </head>
   <body>
     <header class="site-header">
       <div class="container">
         <h1 class="logo">Drumio</h1>
-        <nav class="nav">
-          <a href="#" class="nav-link active" data-section="Metronome" data-i18n="nav.metronome">Metronome</a>
-          <a href="#" class="nav-link" data-section="Rudiments" data-i18n="nav.rudiments">Rudiments</a>
-          <a href="#" class="nav-link" data-section="Drills" data-i18n="nav.drills">Drills</a>
+        <nav class="nav" data-i18n-aria="nav.aria">
+          <a href="#metronome" class="nav-link" data-section="metronome" data-i18n="nav.metronome">Metronome</a>
+          <a href="#rudiments" class="nav-link" data-section="rudiments" data-i18n="nav.rudiments">Rudiments</a>
+          <a href="#drills" class="nav-link" data-section="drills" data-i18n="nav.drills">Drills</a>
         </nav>
-        <select class="lang-select" id="langSelect" aria-label="Select language">
-          <option value="en">EN</option>
-          <option value="tr">TR</option>
-        </select>
-        <button class="theme-toggle" id="themeToggle" data-i18n-aria="theme.toggleAria" aria-label="Toggle dark mode">
-          ☀️
-        </button>
+        <select class="lang-select" id="langSelect" data-i18n-aria="lang.aria"></select>
+        <button class="theme-toggle" id="themeToggle" data-i18n-aria="theme.toggleAria"></button>
       </div>
     </header>
 
     <main class="main-content" id="app">
 
       <!-- ── Metronome ───────────────────────────────────────── -->
-      <section class="metronome container" id="metronome-section">
+      <section class="metronome container" id="metronome-section" data-section="metronome">
         <div class="card metronome-card">
+
+          <!-- Active rudiment exercise -->
+          <div class="exercise-bar" id="exerciseBar" hidden>
+            <div class="exercise-info">
+              <span class="exercise-label" data-i18n="exercise.label">Exercise</span>
+              <span class="exercise-name" id="exerciseName"></span>
+            </div>
+            <div class="exercise-actions">
+              <button class="chip-btn" id="exerciseLead" type="button"></button>
+              <button class="chip-btn" id="exerciseClose" type="button" data-i18n="exercise.end">End</button>
+            </div>
+          </div>
 
           <!-- Beat indicator -->
           <div class="beat-indicator" id="beatIndicator" aria-hidden="true"></div>
 
+          <!-- Sticking lane (visible during an exercise) -->
+          <div class="sticking-lane" id="stickingLane" aria-hidden="true" hidden></div>
+
           <!-- BPM display -->
           <div class="bpm-display">
-            <div
+            <input
               class="bpm-number"
               id="bpmNumber"
-              role="spinbutton"
+              type="number"
+              inputmode="numeric"
+              min="20"
+              max="300"
+              value="100"
               aria-label="BPM"
-              aria-valuenow="100"
-              aria-valuemin="20"
-              aria-valuemax="300"
-              tabindex="0"
-            >100</div>
+            />
             <span class="bpm-label">BPM</span>
           </div>
 
           <!-- Slider + nudge -->
           <div class="bpm-controls">
-            <input
-              type="range"
-              class="bpm-slider"
-              id="bpmSlider"
-              min="20"
-              max="300"
-              value="100"
-              aria-label="BPM slider"
-            />
+            <input type="range" class="bpm-slider" id="bpmSlider" min="20" max="300" value="100" data-i18n-aria="metronome.sliderAria" />
             <div class="bpm-nudge">
-              <button class="nudge-btn" data-delta="-10">−10</button>
-              <button class="nudge-btn" data-delta="-1">−1</button>
-              <button class="nudge-btn" data-delta="1">+1</button>
-              <button class="nudge-btn" data-delta="10">+10</button>
+              <button class="nudge-btn" type="button" data-delta="-10">−10</button>
+              <button class="nudge-btn" type="button" data-delta="-1">−1</button>
+              <button class="nudge-btn" type="button" data-delta="1">+1</button>
+              <button class="nudge-btn" type="button" data-delta="10">+10</button>
             </div>
           </div>
 
-          <!-- Time signature selector -->
-          <div class="time-sig-selector">
-            <label class="time-sig-label" for="timeSigSelect" data-i18n="metronome.timeSig">Time Signature</label>
-            <select class="time-sig-select" id="timeSigSelect" aria-label="Time signature"></select>
+          <!-- Time signature + subdivision -->
+          <div class="metronome-selects">
+            <label class="select-field">
+              <span class="select-label" data-i18n="metronome.timeSig">Time Signature</span>
+              <select class="metro-select" id="timeSigSelect"></select>
+            </label>
+            <label class="select-field">
+              <span class="select-label" data-i18n="metronome.subdivision">Subdivision</span>
+              <select class="metro-select" id="subdivisionSelect"></select>
+            </label>
           </div>
 
           <!-- Sound selector -->
-          <div class="sound-selector" role="group" aria-label="Metronome sound">
-            <button class="sound-btn active" data-sound="click">Click</button>
-            <button class="sound-btn" data-sound="woodblock">Woodblock</button>
-            <button class="sound-btn" data-sound="hihat">Hi-Hat</button>
-            <button class="sound-btn" data-sound="rimshot">Rimshot</button>
-            <button class="sound-btn" data-sound="beep">Beep</button>
-          </div>
+          <div class="sound-selector" id="soundSelector" role="group" data-i18n-aria="metronome.soundAria"></div>
 
           <!-- Actions -->
           <div class="metronome-actions">
-            <button class="tap-btn" id="tapBtn" data-i18n="metronome.tapTempo">Tap Tempo</button>
-            <button class="play-btn" id="playBtn" data-i18n="metronome.start">Start</button>
+            <button class="tap-btn" id="tapBtn" type="button" data-i18n="metronome.tapTempo">Tap Tempo</button>
+            <button class="play-btn" id="playBtn" type="button" data-i18n="metronome.start">Start</button>
           </div>
+          <p class="shortcut-hint" data-i18n="metronome.shortcuts">Space: start / stop · T: tap tempo</p>
 
         </div>
       </section>
 
+      <!-- ── Tempo Trainer ──────────────────────────────────── -->
+      <section class="tool-section container" id="trainer-section" data-section="metronome">
+        <div class="card tool-card">
+          <div class="tool-header">
+            <h2 class="tool-title" data-i18n="trainer.title">Tempo Trainer</h2>
+            <label class="switch">
+              <input type="checkbox" id="trainerEnabled" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="visually-hidden" data-i18n="trainer.enable">Enable tempo trainer</span>
+            </label>
+          </div>
+          <div class="trainer-fields" id="trainerFields">
+            <label class="num-field">
+              <span data-i18n="trainer.step">Increase by</span>
+              <span class="num-input-wrap"><input type="number" class="num-input" id="trainerStep" min="1" max="50" value="5" /> BPM</span>
+            </label>
+            <label class="num-field">
+              <span data-i18n="trainer.every">Every</span>
+              <span class="num-input-wrap"><input type="number" class="num-input" id="trainerEvery" min="5" max="600" value="30" /> <span data-i18n="trainer.seconds">sec</span></span>
+            </label>
+            <label class="num-field">
+              <span data-i18n="trainer.target">Up to</span>
+              <span class="num-input-wrap"><input type="number" class="num-input" id="trainerTarget" min="20" max="300" value="140" /> BPM</span>
+            </label>
+            <label class="check-field">
+              <input type="checkbox" id="trainerReturn" />
+              <span data-i18n="trainer.return">Then back down</span>
+            </label>
+          </div>
+          <p class="tool-hint" id="trainerStatus" data-i18n="trainer.hint">Tempo changes at the start of a bar.</p>
+        </div>
+      </section>
+
       <!-- ── Practice Timer ─────────────────────────────────── -->
-      <section class="timer-section container" id="timer-section" hidden>
-        <div class="card timer-card">
-          <h2 class="timer-title" data-i18n="timer.title">Practice Timer</h2>
+      <section class="tool-section container" id="timer-section" data-section="metronome">
+        <div class="card tool-card timer-card">
+          <h2 class="tool-title" data-i18n="timer.title">Practice Timer</h2>
           <div class="timer-display" id="timerDisplay">05:00</div>
           <div class="timer-set">
             <span class="timer-label" data-i18n="timer.setDuration">Set duration</span>
             <div class="timer-inputs">
-              <input
-                type="number"
-                class="timer-input"
-                id="timerMinutes"
-                min="0"
-                max="99"
-                value="5"
-                aria-label="Minutes"
-              />
+              <input type="number" class="timer-input" id="timerMinutes" min="0" max="99" value="5" data-i18n-aria="timer.minutesAria" />
               <span class="timer-colon">:</span>
-              <input
-                type="number"
-                class="timer-input"
-                id="timerSeconds"
-                min="0"
-                max="59"
-                value="0"
-                aria-label="Seconds"
-              />
+              <input type="number" class="timer-input" id="timerSeconds" min="0" max="59" value="0" data-i18n-aria="timer.secondsAria" />
             </div>
-            <span class="timer-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
+            <span class="tool-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
           </div>
         </div>
       </section>
 
       <!-- ── Rudiments ──────────────────────────────────────── -->
-      <section class="rudiments container" id="rudiments-section" hidden>
-
+      <section class="rudiments container" id="rudiments-section" data-section="rudiments" hidden>
         <div id="rudimentsToolbar" class="rudiments-toolbar">
-          <input
-            type="search"
-            class="search-input"
-            id="rudimentSearch"
-            placeholder="Search rudiments…"
-            data-i18n-placeholder="rudiments.search"
-            aria-label="Search rudiments"
-          />
-          <div class="filter-pills" data-filter="category" role="group" aria-label="Filter by category"></div>
-          <div class="filter-pills" data-filter="difficulty" role="group" aria-label="Filter by difficulty"></div>
+          <input type="search" class="search-input" id="rudimentSearch" data-i18n-placeholder="rudiments.search" data-i18n-aria="rudiments.search" />
+          <div class="filter-pills" data-filter="category" role="group" data-i18n-aria="filter.categoryAria"></div>
+          <div class="filter-pills" data-filter="difficulty" role="group" data-i18n-aria="filter.difficultyAria"></div>
         </div>
-
-        <p class="rudiments-count" id="rudimentsCount"></p>
-
+        <p class="rudiments-count" id="rudimentsCount" aria-live="polite"></p>
         <div class="rudiments-grid" id="rudimentsGrid"></div>
-
       </section>
 
-      <!-- ── Drills ──────────────────────────────────────────────────── -->
-      <section class="drills container" id="drills-section" hidden>
-
+      <!-- ── Drills ─────────────────────────────────────────── -->
+      <section class="drills container" id="drills-section" data-section="drills" hidden>
         <div id="drillsToolbar" class="rudiments-toolbar">
-          <input
-            type="search"
-            class="search-input"
-            id="drillSearch"
-            placeholder="Search drills…"
-            data-i18n-placeholder="drills.search"
-            aria-label="Search drills"
-          />
-          <div class="filter-pills" data-filter="category" role="group" aria-label="Filter by category"></div>
-          <div class="filter-pills" data-filter="difficulty" role="group" aria-label="Filter by difficulty"></div>
+          <input type="search" class="search-input" id="drillSearch" data-i18n-placeholder="drills.search" data-i18n-aria="drills.search" />
+          <div class="filter-pills" data-filter="category" role="group" data-i18n-aria="filter.categoryAria"></div>
+          <div class="filter-pills" data-filter="difficulty" role="group" data-i18n-aria="filter.difficultyAria"></div>
         </div>
-
-        <p class="drills-count" id="drillsCount"></p>
-
+        <p class="drills-count" id="drillsCount" aria-live="polite"></p>
         <div class="drills-grid" id="drillsGrid"></div>
-
       </section>
 
     </main>
@@ -184,11 +196,6 @@
       </div>
     </footer>
 
-    <script src="js/i18n.js?v=11"></script>
-    <script src="js/modal.js?v=11"></script>
-    <script src="js/metronome.js?v=11"></script>
-    <script src="js/rudiments.js?v=11"></script>
-    <script src="js/drills.js?v=11"></script>
-    <script src="js/app.js?v=11"></script>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
