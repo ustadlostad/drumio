@@ -116,6 +116,24 @@
         </div>
       </section>
 
+      <!-- ── Practice Timer ─────────────────────────────────── -->
+      <section class="tool-section container" id="timer-section" data-section="metronome">
+        <div class="card tool-card timer-card">
+          <h2 class="tool-title" data-i18n="timer.title">Practice Timer</h2>
+          <div class="timer-display" id="timerDisplay">05:00</div>
+          <div class="timer-set">
+            <span class="timer-label" data-i18n="timer.setDuration">Set duration</span>
+            <div class="timer-presets filter-pills" id="timerPresets" role="group" data-i18n-aria="timer.presetsAria"></div>
+            <div class="timer-inputs" id="timerInputs" hidden>
+              <input type="number" class="timer-input" id="timerMinutes" min="0" max="99" value="5" data-i18n-aria="timer.minutesAria" />
+              <span class="timer-colon">:</span>
+              <input type="number" class="timer-input" id="timerSeconds" min="0" max="59" value="0" data-i18n-aria="timer.secondsAria" />
+            </div>
+            <span class="tool-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
+          </div>
+        </div>
+      </section>
+
       <!-- ── Tempo Trainer ──────────────────────────────────── -->
       <section class="tool-section container" id="trainer-section" data-section="metronome">
         <div class="card tool-card">
@@ -146,24 +164,6 @@
             </label>
           </div>
           <p class="tool-hint" id="trainerStatus" data-i18n="trainer.hint">Tempo changes at the start of a bar.</p>
-        </div>
-      </section>
-
-      <!-- ── Practice Timer ─────────────────────────────────── -->
-      <section class="tool-section container" id="timer-section" data-section="metronome">
-        <div class="card tool-card timer-card">
-          <h2 class="tool-title" data-i18n="timer.title">Practice Timer</h2>
-          <div class="timer-display" id="timerDisplay">05:00</div>
-          <div class="timer-set">
-            <span class="timer-label" data-i18n="timer.setDuration">Set duration</span>
-            <div class="timer-presets filter-pills" id="timerPresets" role="group" data-i18n-aria="timer.presetsAria"></div>
-            <div class="timer-inputs" id="timerInputs" hidden>
-              <input type="number" class="timer-input" id="timerMinutes" min="0" max="99" value="5" data-i18n-aria="timer.minutesAria" />
-              <span class="timer-colon">:</span>
-              <input type="number" class="timer-input" id="timerSeconds" min="0" max="59" value="0" data-i18n-aria="timer.secondsAria" />
-            </div>
-            <span class="tool-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
-          </div>
         </div>
       </section>
 
