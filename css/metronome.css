@@ -5,11 +5,38 @@
 }
 
 .metronome-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.75rem;
-  padding: 2rem 1.5rem;
+  /* Extra top padding clears the absolutely-positioned focus toggle
+     in the corner so it never overlaps the exercise bar's own
+     right-aligned buttons. */
+  padding: 3.5rem 1.5rem 2rem;
+}
+
+/* ─── Focus toggle ───────────────────────────────────────────────── */
+
+.focus-toggle {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  z-index: 5;
+}
+
+.focus-toggle:hover {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
 }
 
 /* ─── Beat Indicator ────────────────────────────────────────────── */
@@ -75,6 +102,8 @@
 /* ─── Exercise bar & sticking lane ──────────────────────────────── */
 
 .exercise-bar {
+  position: relative;
+  z-index: 6;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -106,7 +135,19 @@
 }
 
 .exercise-name {
+  background: none;
+  border: none;
+  font: inherit;
   font-weight: 700;
+  color: var(--color-text);
+  text-align: left;
+  padding: 0;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
+.exercise-name:hover {
+  color: var(--color-accent);
 }
 
 .exercise-actions {
@@ -127,6 +168,37 @@
 .chip-btn:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+/* ─── Lead-hand segmented control ────────────────────────────────── */
+
+.lead-toggle {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.lead-btn {
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  border: none;
+  min-width: 44px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lead-btn + .lead-btn {
+  border-left: 1px solid var(--color-border);
+}
+
+.lead-btn:hover {
+  color: var(--color-text);
+}
+
+.lead-btn.active {
+  background-color: var(--color-accent);
+  color: #fff;
 }
 
 .sticking-lane {
@@ -155,6 +227,36 @@
   color: var(--color-accent);
 }
 
+/* ─── Practice-timer mini readout ─────────────────────────────────── */
+
+.timer-mini {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-alt);
+  padding: 0.25rem 0.85rem;
+  border-radius: 20px;
+}
+
+/* ─── Count-in overlay ───────────────────────────────────────────── */
+/* Absolutely positioned so it takes over the card without shifting the
+   BPM display and beat indicator around it while it counts down. */
+
+.count-in:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  background-color: var(--color-surface);
+  border-radius: inherit;
+  z-index: 3;
+}
+
 /* ─── BPM Display ───────────────────────────────────────────────── */
 
 .bpm-display {
@@ -162,6 +264,31 @@
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
+  position: relative;
+}
+
+.bpm-edit-hint {
+  display: none;
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+/* Devices without hover can't discover the edit affordance from a hover
+   background change, so spell it out instead. */
+@media (hover: none) {
+  .bpm-edit-hint {
+    display: block;
+  }
+}
+
+.trainer-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  margin-top: 0.3rem;
 }
 
 .bpm-number {
@@ -409,6 +536,11 @@
   color: var(--color-text-muted);
 }
 
+.timer-manual-controls {
+  display: flex;
+  gap: 0.6rem;
+}
+
 .timer-set {
   display: flex;
   flex-direction: column;
@@ -590,6 +722,47 @@
   outline-offset: 2px;
 }
 
+/* ─── Settings disclosure (time sig, subdivision, sound) ─────────── */
+
+.metronome-settings {
+  width: 100%;
+}
+
+.metronome-settings summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  list-style: none;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  min-height: 44px;
+}
+
+.metronome-settings summary:hover {
+  color: var(--color-text);
+}
+
+.metronome-settings summary::-webkit-details-marker {
+  display: none;
+}
+
+.metronome-settings summary::after {
+  content: "▾";
+  font-size: 0.7rem;
+}
+
+.metronome-settings[open] summary::after {
+  content: "▴";
+}
+
+.metronome-settings > *:not(summary) {
+  margin-top: 1.25rem;
+}
+
 /* ─── Time Signature & Subdivision ───────────────────────────────── */
 
 .metronome-selects {
@@ -608,6 +781,7 @@
 .shortcut-hint {
   font-size: 0.72rem;
   color: var(--color-text-muted);
+  text-align: center;
 }
 
 .select-label {

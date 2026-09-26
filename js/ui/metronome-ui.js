@@ -174,5 +174,19 @@ export function initMetronomeUI() {
     renderPlayState();
     renderSounds();
     renderSubdivisionOptions();
+    renderFocusToggle();
+  });
+
+  // ── Focus mode ──────────────────────────────────────────────
+  const focusToggle = $("focusToggle");
+  function renderFocusToggle() {
+    const on = document.body.classList.contains("focus-mode");
+    focusToggle.textContent = on ? "✕" : "⤢";
+    focusToggle.setAttribute("aria-label", t(on ? "metronome.focusExitAria" : "metronome.focusAria"));
+  }
+  renderFocusToggle();
+  focusToggle.addEventListener("click", () => {
+    document.body.classList.toggle("focus-mode");
+    renderFocusToggle();
   });
 }

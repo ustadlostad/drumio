@@ -58,13 +58,27 @@ export function createCatalog(options) {
     );
   }
 
+  function isFiltered() {
+    return state.category !== ALL || state.difficulty !== ALL || Boolean(state.query);
+  }
+
   function render() {
     const grid = $("grid");
     const filtered = state.items.filter(matches);
-    $("count").textContent = t(options.keys.count, filtered.length, state.items.length);
+    $("count").textContent = isFiltered() ? t(options.keys.count, filtered.length, state.items.length) : "";
     grid.innerHTML = filtered.length
       ? filtered.map(options.cardHTML).join("")
-      : `<div class="catalog-empty">${t(options.keys.empty)}</div>`;
+      : `<div class="catalog-empty">
+          <p>${t(options.keys.empty)}</p>
+          ${isFiltered() ? `<button type="button" class="pill clear-filters-btn">${t("filter.clear")}</button>` : ""}
+        </div>`;
+  }
+
+  function clearFilters() {
+    Object.assign(state, { category: ALL, difficulty: ALL, query: "" });
+    $("search").value = "";
+    renderFilters();
+    render();
   }
 
   function wireEvents() {
@@ -83,9 +97,14 @@ export function createCatalog(options) {
     });
 
     $("grid").addEventListener("click", (e) => {
+      if (e.target.closest(".clear-filters-btn")) {
+        clearFilters();
+        return;
+      }
       const btn = e.target.closest("[data-action]");
-      if (!btn) return;
-      const item = state.items.find((i) => i.id === btn.closest("[data-id]").dataset.id);
+      const card = btn?.closest("[data-id]");
+      if (!card) return;
+      const item = state.items.find((i) => i.id === card.dataset.id);
       options.actions[btn.dataset.action]?.(item, btn);
     });
 
@@ -120,10 +139,7 @@ export function createCatalog(options) {
   /** Clear filters, then scroll to and highlight one card. */
   async function focus(id) {
     await init();
-    Object.assign(state, { category: ALL, difficulty: ALL, query: "" });
-    $("search").value = "";
-    renderFilters();
-    render();
+    clearFilters();
     const card = $("grid").querySelector(`[data-id="${CSS.escape(id)}"]`);
     if (!card) return;
     card.scrollIntoView({ behavior: "smooth", block: "center" });

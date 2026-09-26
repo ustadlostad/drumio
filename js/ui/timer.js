@@ -1,5 +1,11 @@
 /**
- * timer.js — practice countdown that starts and stops with the metronome.
+ * timer.js — practice countdown.
+ *
+ * Linked mode (default): starts and pauses with the metronome, and resumes
+ * from where it left off rather than resetting, so a short stop to fix a
+ * grip doesn't wipe out the practice session's progress.
+ * Manual mode: runs on its own Start/Pause/Reset controls, independent of
+ * the metronome, for practising without a click.
  */
 
 import { metronome } from "../audio/metronome.js";
@@ -15,14 +21,44 @@ function formatTime(secs) {
   return `${m}:${s}`;
 }
 
+/** Two short beeps plus a haptic buzz so the end of a session is noticed. */
+function playDoneSignal() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.22].forEach((offset) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.frequency.value = 880;
+      osc.connect(gain).connect(ctx.destination);
+      const at = ctx.currentTime + offset;
+      gain.gain.setValueAtTime(0.0001, at);
+      gain.gain.exponentialRampToValueAtTime(0.35, at + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, at + 0.18);
+      osc.start(at);
+      osc.stop(at + 0.2);
+    });
+  } catch {
+    // Web Audio unavailable — the toast still shows.
+  }
+  navigator.vibrate?.([120, 60, 120]);
+}
+
 export function initTimer() {
   const display = document.getElementById("timerDisplay");
+  const mini = document.getElementById("timerMini");
   const presets = document.getElementById("timerPresets");
   const inputsWrap = document.getElementById("timerInputs");
   const minsInput = document.getElementById("timerMinutes");
   const secsInput = document.getElementById("timerSeconds");
+  const linkedToggle = document.getElementById("timerLinked");
+  const manualControls = document.getElementById("timerManualControls");
+  const startBtn = document.getElementById("timerStartBtn");
+  const resetBtn = document.getElementById("timerResetBtn");
+  const hint = document.getElementById("timerHint");
 
+  let linked = settings.timerLinked !== false;
   let endAt = 0;
+  let remainingOnPause = null;   // seconds left, set while paused
   let interval = null;
   let activePreset = "custom";
 
@@ -57,9 +93,26 @@ export function initTimer() {
     inputsWrap.hidden = !show;
   }
 
+  function isRunning() {
+    return interval !== null;
+  }
+
+  function currentRemaining() {
+    if (isRunning()) return Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+    if (remainingOnPause !== null) return remainingOnPause;
+    return duration();
+  }
+
   function render(remaining) {
     display.textContent = formatTime(remaining);
     display.classList.toggle("timer-done", remaining === 0);
+    mini.hidden = !isRunning();
+    mini.textContent = "⏱ " + formatTime(remaining);
+    startBtn.textContent = t(isRunning() ? "timer.pauseBtn" : "timer.startBtn");
+  }
+
+  function renderHint() {
+    hint.textContent = t(linked ? "timer.hint" : "timer.hintManual");
   }
 
   function setControlsDisabled(disabled) {
@@ -72,36 +125,90 @@ export function initTimer() {
     // Wall-clock based so a throttled interval never drifts.
     const remaining = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
     render(remaining);
-    if (remaining === 0) {
-      metronome.stop();
-      showToast(t("timer.done"));
-    }
+    if (remaining === 0) complete();
   }
 
+  function beginCountdown(secs) {
+    endAt = Date.now() + secs * 1000;
+    remainingOnPause = null;
+    setControlsDisabled(true);
+    clearInterval(interval);
+    interval = setInterval(tick, 250);
+    render(secs);
+  }
+
+  /** Fresh start from the configured duration. */
   function start() {
     const secs = duration();
     if (secs === 0) return;
-    endAt = Date.now() + secs * 1000;
-    setControlsDisabled(true);
-    render(secs);
-    interval = setInterval(tick, 250);
+    beginCountdown(secs);
   }
 
-  function stop() {
+  /** Continue from where a pause left off. */
+  function resume() {
+    if (remainingOnPause === null || remainingOnPause === 0) return;
+    beginCountdown(remainingOnPause);
+  }
+
+  /** Stop ticking but keep the remaining time so it can resume later. */
+  function pause() {
+    if (!isRunning()) return;
+    const remaining = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
     clearInterval(interval);
     interval = null;
+    remainingOnPause = remaining;
+    render(remaining);
+  }
+
+  /** Clear the countdown entirely and restore the configured duration. */
+  function reset() {
+    clearInterval(interval);
+    interval = null;
+    remainingOnPause = null;
     setControlsDisabled(false);
     render(duration());
+  }
+
+  function complete() {
+    clearInterval(interval);
+    interval = null;
+    remainingOnPause = null;
+    setControlsDisabled(false);
+    render(0);
+    playDoneSignal();
+    showToast(t("timer.done"));
+    if (linked) metronome.stop();
+  }
+
+  function toggleManualStart() {
+    if (isRunning()) pause();
+    else if (remainingOnPause !== null) resume();
+    else start();
   }
 
   activePreset = matchingPreset();
   showCustomInputs(activePreset === "custom");
   renderPresets();
+  renderHint();
+  manualControls.hidden = linked;
   render(duration());
+
+  linkedToggle.checked = linked;
+  linkedToggle.addEventListener("change", () => {
+    linked = linkedToggle.checked;
+    updateSettings({ timerLinked: linked });
+    manualControls.hidden = linked;
+    renderHint();
+    reset();
+    if (linked && metronome.isPlaying) start();
+  });
+
+  startBtn.addEventListener("click", toggleManualStart);
+  resetBtn.addEventListener("click", reset);
 
   presets.addEventListener("click", (e) => {
     const btn = e.target.closest("button");
-    if (!btn || interval) return;
+    if (!btn || isRunning()) return;
     if (btn.dataset.custom) {
       activePreset = "custom";
       showCustomInputs(true);
@@ -121,7 +228,7 @@ export function initTimer() {
 
   [minsInput, secsInput].forEach((input) => {
     input.addEventListener("input", () => {
-      if (interval) return;
+      if (isRunning()) return;
       render(duration());
     });
     input.addEventListener("change", () => {
@@ -134,8 +241,18 @@ export function initTimer() {
     });
   });
 
-  document.addEventListener("languagechange", renderPresets);
+  document.addEventListener("languagechange", () => {
+    renderPresets();
+    renderHint();
+    render(currentRemaining());
+  });
 
-  metronome.on("start", start);
-  metronome.on("stop", stop);
+  metronome.on("start", () => {
+    if (!linked) return;
+    if (remainingOnPause !== null) resume();
+    else start();
+  });
+  metronome.on("stop", () => {
+    if (linked) pause();
+  });
 }
