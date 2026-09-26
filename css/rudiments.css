@@ -124,12 +124,6 @@
   gap: 0.6rem;
   padding: 1.25rem;
   cursor: default;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.rudiment-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
 }
 
 .rudiment-card-header {
@@ -261,6 +255,10 @@
   padding: 3rem 1rem;
   color: var(--color-text-muted);
   font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .rudiments-count,

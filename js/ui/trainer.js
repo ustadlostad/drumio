@@ -4,10 +4,12 @@
 
 import { metronome, clampBpm } from "../audio/metronome.js";
 import { t } from "../core/i18n.js";
+import { showToast } from "./toast.js";
 
 const $ = (id) => document.getElementById(id);
 
 let fields = null;
+let badge = null;
 
 function readConfig() {
   if (!fields.enabled.checked) return null;
@@ -19,10 +21,17 @@ function readConfig() {
   };
 }
 
+function renderBadge() {
+  const cfg = metronome.trainer;
+  badge.hidden = !cfg;
+  if (cfg) badge.textContent = t("trainer.badgeTarget", cfg.target);
+}
+
 function apply() {
   fields.container.classList.toggle("disabled", !fields.enabled.checked);
   metronome.setTrainer(readConfig());
   renderStatus();
+  renderBadge();
 }
 
 function renderStatus(text) {
@@ -51,19 +60,25 @@ export function initTrainer() {
     container: $("trainerFields"),
     status: $("trainerStatus"),
   };
+  badge = $("trainerBadge");
 
   Object.values(fields).forEach((el) => {
     if (el.tagName === "INPUT") el.addEventListener("change", apply);
   });
 
   metronome.on("bpmchange", ({ bpm, source }) => {
-    if (source === "trainer" && metronome.isPlaying) renderStatus(t("trainer.now", bpm));
+    if (source !== "trainer") return;
+    if (metronome.isPlaying) renderStatus(t("trainer.now", bpm));
+    else showToast(t("trainer.reverted", bpm));
   });
   metronome.on("trainer", ({ done }) => {
     if (done) renderStatus(t("trainer.done"));
   });
   metronome.on("stop", () => renderStatus());
-  document.addEventListener("languagechange", () => renderStatus());
+  document.addEventListener("languagechange", () => {
+    renderStatus();
+    renderBadge();
+  });
 
   apply();
 }

@@ -8,7 +8,7 @@ import { loadDrills, loadRudiments } from "../core/data.js";
 import { t, localized } from "../core/i18n.js";
 import { escapeHTML } from "../core/dom.js";
 import { createCatalog, categoryLabel } from "./catalog.js";
-import { startExercise, endExercise } from "./exercise.js";
+import { startExercise, endExercise, runCountIn, COUNT_IN_BEATS } from "./exercise.js";
 import { configureTrainer } from "./trainer.js";
 import { showSection } from "./nav.js";
 import { showToast } from "./toast.js";
@@ -57,10 +57,10 @@ function cardHTML(d) {
       <div class="drill-card-footer">
         <span class="drill-start-at">${escapeHTML(t("drills.startAt", d.bpmRange.min))}</span>
         <div class="card-actions">
-          ${videoButtonHTML(d)}
           <button type="button" class="practise-btn" data-action="practise"
             aria-label="${escapeHTML(t("drills.practiseAria", d.name, d.bpmRange.min))}"
           >▶ ${escapeHTML(t("drills.practise"))}</button>
+          ${videoButtonHTML(d)}
         </div>
       </div>
     </article>
@@ -69,10 +69,10 @@ function cardHTML(d) {
 
 function practise(drill) {
   const bpm = drill.bpmRange.min;
+  const hadTrainer = Boolean(metronome.trainer);
   metronome.stop();
-  configureTrainer(
-    drill.ramp ? { ...drill.ramp, target: drill.bpmRange.max } : null
-  );
+  const trainerConfig = drill.ramp ? { ...drill.ramp, target: drill.bpmRange.max } : null;
+  configureTrainer(trainerConfig);
 
   const rudiment = drill.rudiments.length === 1 ? rudimentsById.get(drill.rudiments[0]) : null;
   if (rudiment) {
@@ -81,9 +81,13 @@ function practise(drill) {
     endExercise();
     metronome.setBpm(bpm);
     showSection("metronome");
-    metronome.start();
+    runCountIn(bpm, COUNT_IN_BEATS, () => metronome.start());
   }
-  showToast(t("drills.toast", bpm));
+  showToast(
+    hadTrainer && !trainerConfig
+      ? `${t("drills.toast", bpm)} — ${t("trainer.disabledByDrill")}`
+      : t("drills.toast", bpm)
+  );
 }
 
 export const drillCatalog = createCatalog({

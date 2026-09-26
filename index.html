@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#e63946" />
+    <meta name="theme-color" content="#c1121f" />
     <meta name="description" content="Metronome, rudiments and drills for drummers." />
     <title>Drumio</title>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -37,7 +37,7 @@
           <a href="#drills" class="nav-link" data-section="drills" data-i18n="nav.drills">Drills</a>
         </nav>
         <select class="lang-select" id="langSelect" data-i18n-aria="lang.aria"></select>
-        <button class="theme-toggle" id="themeToggle" data-i18n-aria="theme.toggleAria"></button>
+        <button class="theme-toggle" id="themeToggle"></button>
       </div>
     </header>
 
@@ -47,23 +47,34 @@
       <section class="metronome container" id="metronome-section" data-section="metronome">
         <div class="card metronome-card">
 
+          <button class="focus-toggle" id="focusToggle" type="button">⤢</button>
+
           <!-- Active rudiment exercise -->
           <div class="exercise-bar" id="exerciseBar" hidden>
             <div class="exercise-info">
               <span class="exercise-label" data-i18n="exercise.label">Exercise</span>
-              <span class="exercise-name" id="exerciseName"></span>
+              <button type="button" class="exercise-name" id="exerciseName"></button>
             </div>
             <div class="exercise-actions">
-              <button class="chip-btn" id="exerciseLead" type="button"></button>
+              <div class="lead-toggle" id="exerciseLeadToggle" role="group" data-i18n-aria="exercise.leadAria">
+                <button type="button" class="lead-btn" data-lead="right" id="leadRightBtn">R</button>
+                <button type="button" class="lead-btn" data-lead="left" id="leadLeftBtn">L</button>
+              </div>
               <button class="chip-btn" id="exerciseClose" type="button" data-i18n="exercise.end">End</button>
             </div>
           </div>
+
+          <!-- Mini practice-timer readout, shown while it is running -->
+          <div class="timer-mini" id="timerMini" hidden></div>
 
           <!-- Beat indicator -->
           <div class="beat-indicator" id="beatIndicator" aria-hidden="true"></div>
 
           <!-- Sticking lane (visible during an exercise) -->
           <div class="sticking-lane" id="stickingLane" aria-hidden="true" hidden></div>
+
+          <!-- Count-in overlay, shown briefly before an exercise starts -->
+          <div class="count-in" id="countIn" aria-live="assertive" hidden></div>
 
           <!-- BPM display -->
           <div class="bpm-display">
@@ -78,6 +89,14 @@
               aria-label="BPM"
             />
             <span class="bpm-label">BPM</span>
+            <span class="bpm-edit-hint" data-i18n="metronome.editHint">Tap to edit</span>
+            <div class="trainer-badge" id="trainerBadge" hidden></div>
+          </div>
+
+          <!-- Actions -->
+          <div class="metronome-actions">
+            <button class="tap-btn" id="tapBtn" type="button" data-i18n="metronome.tapTempo">Tap Tempo</button>
+            <button class="play-btn" id="playBtn" type="button" data-i18n="metronome.start">Start</button>
           </div>
 
           <!-- Slider + nudge -->
@@ -91,27 +110,26 @@
             </div>
           </div>
 
-          <!-- Time signature + subdivision -->
-          <div class="metronome-selects">
-            <label class="select-field">
-              <span class="select-label" data-i18n="metronome.timeSig">Time Signature</span>
-              <select class="metro-select" id="timeSigSelect"></select>
-            </label>
-            <label class="select-field">
-              <span class="select-label" data-i18n="metronome.subdivision">Subdivision</span>
-              <select class="metro-select" id="subdivisionSelect"></select>
-            </label>
-          </div>
+          <details class="metronome-settings">
+            <summary data-i18n="metronome.settingsToggle">Settings</summary>
 
-          <!-- Sound selector -->
-          <div class="sound-selector" id="soundSelector" role="group" data-i18n-aria="metronome.soundAria"></div>
+            <!-- Time signature + subdivision -->
+            <div class="metronome-selects">
+              <label class="select-field">
+                <span class="select-label" data-i18n="metronome.timeSig">Time Signature</span>
+                <select class="metro-select" id="timeSigSelect"></select>
+              </label>
+              <label class="select-field">
+                <span class="select-label" data-i18n="metronome.subdivision">Subdivision</span>
+                <select class="metro-select" id="subdivisionSelect"></select>
+              </label>
+            </div>
 
-          <!-- Actions -->
-          <div class="metronome-actions">
-            <button class="tap-btn" id="tapBtn" type="button" data-i18n="metronome.tapTempo">Tap Tempo</button>
-            <button class="play-btn" id="playBtn" type="button" data-i18n="metronome.start">Start</button>
-          </div>
-          <p class="shortcut-hint" data-i18n="metronome.shortcuts">Space: start / stop · T: tap tempo</p>
+            <!-- Sound selector -->
+            <div class="sound-selector" id="soundSelector" role="group" data-i18n-aria="metronome.soundAria"></div>
+
+            <p class="shortcut-hint" data-i18n="metronome.shortcuts">Space: start / stop · T: tap tempo</p>
+          </details>
 
         </div>
       </section>
@@ -119,8 +137,19 @@
       <!-- ── Practice Timer ─────────────────────────────────── -->
       <section class="tool-section container" id="timer-section" data-section="metronome">
         <div class="card tool-card timer-card">
-          <h2 class="tool-title" data-i18n="timer.title">Practice Timer</h2>
+          <div class="tool-header">
+            <h2 class="tool-title" data-i18n="timer.title">Practice Timer</h2>
+            <label class="switch">
+              <input type="checkbox" id="timerLinked" checked />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="visually-hidden" data-i18n="timer.linkToggle">Sync with metronome</span>
+            </label>
+          </div>
           <div class="timer-display" id="timerDisplay">05:00</div>
+          <div class="timer-manual-controls" id="timerManualControls" hidden>
+            <button type="button" class="tap-btn" id="timerStartBtn" data-i18n="timer.startBtn">Start</button>
+            <button type="button" class="chip-btn" id="timerResetBtn" data-i18n="timer.resetBtn">Reset</button>
+          </div>
           <div class="timer-set">
             <span class="timer-label" data-i18n="timer.setDuration">Set duration</span>
             <div class="timer-presets filter-pills" id="timerPresets" role="group" data-i18n-aria="timer.presetsAria"></div>
@@ -129,7 +158,7 @@
               <span class="timer-colon">:</span>
               <input type="number" class="timer-input" id="timerSeconds" min="0" max="59" value="0" data-i18n-aria="timer.secondsAria" />
             </div>
-            <span class="tool-hint" data-i18n="timer.hint">Syncs with metronome — starts &amp; stops automatically</span>
+            <span class="tool-hint" id="timerHint">Syncs with metronome — starts &amp; stops automatically</span>
           </div>
         </div>
       </section>
@@ -190,6 +219,12 @@
       </section>
 
     </main>
+
+    <nav class="bottom-nav" data-i18n-aria="nav.aria">
+      <a href="#metronome" class="nav-link bottom-nav-link" data-section="metronome" data-i18n="nav.metronome">Metronome</a>
+      <a href="#rudiments" class="nav-link bottom-nav-link" data-section="rudiments" data-i18n="nav.rudiments">Rudiments</a>
+      <a href="#drills" class="nav-link bottom-nav-link" data-section="drills" data-i18n="nav.drills">Drills</a>
+    </nav>
 
     <footer class="site-footer">
       <div class="container">

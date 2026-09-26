@@ -16,6 +16,7 @@ const DEFAULTS = {
   timeSig: "4/4",
   subdivision: 1,     // clicks per beat: 1, 2, 3 or 4
   timerSeconds: 300,
+  timerLinked: true,  // whether the practice timer starts/stops with the metronome
 };
 
 function read() {

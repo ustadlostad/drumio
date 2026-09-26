@@ -7,9 +7,9 @@
   --color-border:       #e0e0e0;
   --color-text:         #1a1a1a;
   --color-text-muted:   #6b6b6b;
-  --color-accent:       #e63946;
-  --color-accent-hover: #c1121f;
-  --color-accent-soft:  rgba(230, 57, 70, 0.12);
+  --color-accent:       #c1121f;
+  --color-accent-hover: #8f0d17;
+  --color-accent-soft:  rgba(193, 18, 31, 0.12);
   --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md:          0 4px 12px rgba(0, 0, 0, 0.10);
 }
@@ -22,9 +22,9 @@
   --color-border:       #333333;
   --color-text:         #f0f0f0;
   --color-text-muted:   #909090;
-  --color-accent:       #e63946;
+  --color-accent:       #d1293a;
   --color-accent-hover: #ff6b74;
-  --color-accent-soft:  rgba(230, 57, 70, 0.18);
+  --color-accent-soft:  rgba(209, 41, 58, 0.18);
   --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.30);
   --shadow-md:          0 4px 12px rgba(0, 0, 0, 0.40);
 }
