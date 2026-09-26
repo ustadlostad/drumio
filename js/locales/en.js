@@ -50,6 +50,9 @@ export default {
   // Timer
   'timer.title':       'Practice Timer',
   'timer.setDuration': 'Set duration',
+  'timer.presetsAria': 'Preset durations',
+  'timer.presetLabel': (m) => `${m} min`,
+  'timer.custom':      'Custom',
   'timer.minutesAria': 'Minutes',
   'timer.secondsAria': 'Seconds',
   'timer.hint':        'Syncs with metronome — starts & stops automatically',

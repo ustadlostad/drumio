@@ -424,6 +424,10 @@
   letter-spacing: 1px;
 }
 
+.timer-presets {
+  justify-content: center;
+}
+
 .timer-inputs {
   display: flex;
   align-items: center;

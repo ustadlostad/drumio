@@ -50,6 +50,9 @@ export default {
   // Timer
   'timer.title':       'Çalışma Zamanlayıcısı',
   'timer.setDuration': 'Süre Ayarla',
+  'timer.presetsAria': 'Hazır süreler',
+  'timer.presetLabel': (m) => `${m} dk`,
+  'timer.custom':      'Özel',
   'timer.minutesAria': 'Dakika',
   'timer.secondsAria': 'Saniye',
   'timer.hint':        'Metronom ile senkronize — otomatik başlar ve durur',
