@@ -38,6 +38,7 @@ export function startExercise(rudiment, options = {}) {
 }
 
 export function endExercise() {
+  metronome.stop();
   exercise = null;
   render();
 }
